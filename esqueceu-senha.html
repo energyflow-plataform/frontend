@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recuperar Senha | EnergyFlow</title>
+  <link href="src/css/auth.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <header class="header">
+      <div class="header-container">
+        <div class="header-content">
+          <div class="logo">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#10B981"/>
+            <path d="M20 10L28 18H24V30H16V18H12L20 10Z" fill="white"/>
+            <circle cx="20" cy="24" r="2" fill="#10B981"/>
+          </svg>
+          <a href="index.html"><span class="logo-text">EnergyFlow</span></a>
+         </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+    <div class="background-gradient"></div>
+
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1 class="form-title">Esqueceu sua senha?</h1>
+                <p class="form-subtitle">Digite seu e-mail cadastrado para receber o link de redefinição:</p>
+            </div>
+
+            <div id="alert" class="alert"></div>
+
+        <form id="recuperarForm" class="form">
+            <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="exemplo@email.com" class="form-input"/>
+              <span class="error-message" id="emailError"></span>
+            </div>
+        <button type="submit" class="btn btn-primary">Enviar link</button>
+        </form>
+
+        <div class="form-footer">
+          <p class="footer-text">
+            Lembrou sua senha? <a href="login.html" class="footer-link">Entrar</a>
+          </p>
+        </div>
+        </div>
+    </div>
+    </main>
+
+    <script src="src/javascript/esqueceu-senha.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redefinir Senha | EnergyFlow</title>
+  <link href="src/css/auth.css" rel="stylesheet"/>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="header-content">
+        <div class="logo">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#10B981"/>
+            <path d="M20 10L28 18H24V30H16V18H12L20 10Z" fill="white"/>
+            <circle cx="20" cy="24" r="2" fill="#10B981"/>
+          </svg>
+          <a href="index.html"><span class="logo-text">EnergyFlow</span></a>
+        </div>
+        <a href="login.html" class="header-link">Entrar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="background-gradient"></div>
+    <div class="form-container">
+      <div class="form-card">
+        <div class="form-header">
+          <h1 class="form-title">Redefinir Senha</h1>
+          <p class="form-subtitle">Digite sua nova senha abaixo</p>
+        </div>
+
+        <div id="alert" class="alert"></div>
+
+        <form id="resetForm" class="form">
+          <div class="form-group">
+            <label for="novaSenha" class="form-label">Nova Senha</label>
+            <input type="password" id="novaSenha" placeholder="Digite sua nova senha" required minlength="8" class="form-input"/>
+            <div class="password-strength">
+              <div class="password-strength-bar" id="passwordStrengthBar"></div>
+            </div>
+            <p class="form-hint">
+                Deve possuir pelo menos 8 caracteres com letras maiúsculas, minúsculas, número e caractere especial
+              </p>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Salvar nova senha</button>
+        </form>
+
+        <div class="form-footer">
+          <p class="footer-text">
+            Lembrou sua senha?
+            <a href="login.html" class="footer-link">Entrar</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="src/javascript/resetar-senha.js"></script>
+</body>
+</html>

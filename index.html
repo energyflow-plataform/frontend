@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnergyFlow - Monitoramento de energia em tempo real</title>
+  <link rel="stylesheet" href="src/css/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#10B981"/>
+            <path d="M20 10L28 18H24V30H16V18H12L20 10Z" fill="white"/>
+            <circle cx="20" cy="24" r="2" fill="#10B981"/>
+          </svg>
+          <a href="index.html"><span class="logo-text">EnergyFlow</span></a>
+        </div>
+        
+        <nav class="nav" id="nav">
+          <a href="#home" class="nav-link">Início</a>
+          <a href="#features" class="nav-link">Recursos</a>
+          <a href="#data-visualization" class="nav-link">Demonstração</a>
+          <a href="#testimonials" class="nav-link">Depoimentos</a>
+          <a href="#contact" class="nav-link">Contato</a>
+        </nav>
+        
+        <a href="login.html" class="btn btn-primary cta-btn">Acessar Sistema</a>
+        
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- seção hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Monitore sua <span>energia em tempo real</span>, reduza custos e aumente a eficiência</h1>
+          <p class="hero-subtitle">A nossa plataforma fornece dados precisos, alertas automáticos e visualização do consumo de energia em tempo real.</p>
+          <div class="hero-buttons">
+            <a href="login.html" class="btn btn-primary">Acessar Sistema</a>
+            <a href="#contact" class="btn btn-secondary btn-large">Fale com um especialista</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">30%</span>
+              <span class="stat-label">Redução de custos</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24h</span>
+              <span class="stat-label">Monitoramento em tempo real</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">99.9%</span>
+              <span class="stat-label">Garantia de disponibilidade</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="dashboard-mockup">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <span class="mockup-title">Painel de energia</span>
+            </div>
+            <div class="mockup-content">
+              <div class="chart-container">
+                <div class="chart-bars">
+                  <div class="bar" style="height: 60%"></div>
+                  <div class="bar" style="height: 80%"></div>
+                  <div class="bar" style="height: 45%"></div>
+                  <div class="bar" style="height: 90%"></div>
+                  <div class="bar" style="height: 70%"></div>
+                  <div class="bar" style="height: 55%"></div>
+                  <div class="bar" style="height: 85%"></div>
+                </div>
+              </div>
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <span class="metric-label">Consumo atual</span>
+                  <span class="metric-value">2.4 kW</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-label">Custo de hoje</span>
+                  <span class="metric-value">R$12.50</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-background"></div>
+  </section>
+
+  <!-- seção recursos -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Recursos</span>
+        <h2 class="section-title">Ferramentas poderosas para um controle completo de energia</h2>
+        <p class="section-description">Tudo o que você precisa para monitorar, analisar e otimizar o consumo de energia</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4V28M4 16H28" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="10" stroke="#10B981" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Monitoramento em Tempo Real</h3>
+          <p class="feature-description">Acompanhe o consumo de energia instantaneamente com atualizações de dados a cada segundo</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 8V16L20 20" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="10" stroke="#3B82F6" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Alertas Personalizados</h3>
+          <p class="feature-description">Receba notificações instantâneas quando o consumo ultrapassar os limites definidos</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="10" width="20" height="16" rx="2" stroke="#10B981" stroke-width="2"/>
+              <path d="M10 6V10M22 6V10M6 14H26" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Relatórios Automatizados</h3>
+          <p class="feature-description">Gere relatórios detalhados de consumo automaticamente conforme sua programação</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 16H24M16 8V24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+              <rect x="4" y="4" width="24" height="24" rx="4" stroke="#3B82F6" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Integração de API</h3>
+          <p class="feature-description">Conecte-se perfeitamente aos seus sistemas existentes através da nossa API robusta</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 6L20 14H12L16 6Z" stroke="#10B981" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="16" cy="22" r="4" stroke="#10B981" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Previsão com IA</h3>
+          <p class="feature-description">Preveja padrões de consumo futuros com aprendizado de máquina avançado</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="20" height="20" rx="2" stroke="#3B82F6" stroke-width="2"/>
+              <path d="M12 12H20M12 16H20M12 20H16" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Painel Intuitivo</h3>
+          <p class="feature-description">Acesse todos os seus dados por meio de uma interface limpa e fácil de usar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- seção visualização -->
+  <section id="data-visualization" class="data-visualization-section">
+      <div class="container">
+        <div class="data-visualization-header">
+          <span>Visualização de Dados</span>
+          <h2>Visualize seus dados de energia em tempo real</h2>
+          <p>Monitore e compreenda seu consumo com painéis interativos e insights inteligentes</p>
+        </div>
+        <div class="data-visualization-grid">
+          <div class="data-viz-card">
+            <div class="data-viz-card-header">
+              <div class="icon-badge">
+                <img src="https://c.animaapp.com/mgks5rbcIM9w6x/assets/icon-2.svg" alt="Icon" />
+              </div>
+              <h3>Consumo de Energia por Ambiente</h3>
+              <p>Acompanhe o uso de energia de cada ambiente em tempo real</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="lineChart"></canvas>
+            </div>
+            <div class="chart-tooltip">
+              <span class="tooltip-label">Cozinha</span>
+              <span class="tooltip-value">3.2 kWh hoje</span>
+            </div>
+          </div>
+
+          <div class="data-viz-card">
+            <div class="data-viz-card-header">
+              <div class="icon-badge">
+                <img src="https://c.animaapp.com/mgks5rbcIM9w6x/assets/icon-3.svg" alt="Icon" />
+              </div>
+              <h3>Alertas de Consumo</h3>
+              <p>Identifique instantaneamente os dispositivos que estão consumindo mais energia do que o esperado</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="barChart"></canvas>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <span class="legend-dot normal"></span>
+                <span>Normal</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot warning"></span>
+                <span>Aviso</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot critical"></span>
+                <span>Crítico</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="data-viz-card">
+            <div class="data-viz-card-header">
+              <div class="icon-badge">
+                <img src="https://c.animaapp.com/mgks5rbcIM9w6x/assets/icon-4.svg" alt="Icon" />
+              </div>
+              <h3>Comparação de Dispositivos</h3>
+              <p>Compare os níveis de consumo entre diferentes dispositivos de forma rápida e prática</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="horizontalBarChart"></canvas>
+            </div>
+            <div class="chart-tooltip">
+              <span class="tooltip-label">Climatização</span>
+              <span class="tooltip-value">Maior consumidor</span>
+            </div>
+          </div>
+
+          <div class="data-viz-card">
+            <div class="data-viz-card-header">
+              <div class="icon-badge">
+                <img src="https://c.animaapp.com/mgks5rbcIM9w6x/assets/icon-8.svg" alt="Icon" />
+              </div>
+              <h3>Visão Geral das Economias de Energia</h3>
+              <p>Veja como suas otimizações estão reduzindo o consumo total de energia</p>
+            </div>
+            <div class="chart-container doughnut-container">
+              <canvas id="doughnutChart"></canvas>
+              <div class="chart-center-text">
+                <span class="center-percentage">28%</span>
+                <span class="center-label">Economizado</span>
+              </div>
+            </div>
+            <div class="savings-stats">
+              <div class="savings-stat">
+                <span class="stat-value">R$1.240,00</span>
+                <span class="stat-label">Neste mês</span>
+              </div>
+              <div class="savings-stat">
+                <span class="stat-value">342 kWh</span>
+                <span class="stat-label">Reduzido</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- seção depoimentos -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Depoimentos</span>
+        <h2 class="section-title">Confiado por líderes do setor</h2>
+        <p class="section-description">Veja o que nossos clientes dizem sobre a EnergyFlow</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p class="testimonial-text">A EnergyFlow nos ajudou a reduzir os custos de energia em 35% em apenas seis meses. O monitoramento em tempo real e as previsões baseadas em IA mudaram completamente nossas operações.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <span>JM</span>
+            </div>
+            <div class="author-info">
+              <h4 class="author-name">Jennifer Martinez</h4>
+              <p class="author-title">Diretora de Operações, TechCorp Industries</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p class="testimonial-text">O painel intuitivo da plataforma e os alertas automáticos transformaram a forma como gerenciamos energia em nossas 12 lojas. Altamente recomendada!</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <span>RC</span>
+            </div>
+            <div class="author-info">
+              <h4 class="author-name">Robert Chen</h4>
+              <p class="author-title">Gerente de Instalações, GreenRetail Group</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p class="testimonial-text">Suporte excepcional e recursos poderosos. A integração via API da EnergyFlow tornou fácil conectar com nossos sistemas de gestão predial existentes.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <span>SP</span>
+            </div>
+            <div class="author-info">
+              <h4 class="author-name">Sarah Patel</h4>
+              <p class="author-title">CTO, SmartBuildings Inc.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- seção contato -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2 class="contact-title">Pronto para transformar sua gestão de energia?</h2>
+          <p class="contact-description">Entre em contato com nossa equipe para agendar uma demonstração personalizada e descubra como a EnergyFlow pode ajudar sua empresa a reduzir custos e aumentar a eficiência.</p>
+          <div class="contact-features">
+            <div class="contact-feature">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12L9 16L19 6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Teste gratuito de 30 dias</span>
+            </div>
+            <div class="contact-feature">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12L9 16L19 6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Sem necessidade de cartão de crédito</span>
+            </div>
+            <div class="contact-feature">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12L9 16L19 6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Suporte especializado na implantação</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Nome Completo</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Seu nome" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">E-mail</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="john@exemplo.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="company" class="form-label">Nome da Empresa</label>
+              <input type="text" id="company" name="company" class="form-input" placeholder="Sua empresa" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Mensagem</label>
+              <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Nos conte sobre suas necessidades de monitoramento..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-full">Solicitar Contato</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="8" fill="#10B981"/>
+              <path d="M20 10L28 18H24V30H16V18H12L20 10Z" fill="white"/>
+              <circle cx="20" cy="24" r="2" fill="#10B981"/>
+            </svg>
+            <span class="footer-logo-text">EnergyFlow</span>
+          </div>
+          <p class="footer-description">Plataforma de monitoramento de energia em tempo real que ajuda empresas a reduzir custos e aumentar a eficiência.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 7H8V17H5V7ZM6.5 3C7.33 3 8 3.67 8 4.5C8 5.33 7.33 6 6.5 6C5.67 6 5 5.33 5 4.5C5 3.67 5.67 3 6.5 3ZM11 7H14V8.5C14.5 7.5 15.8 7 17 7C19.2 7 20 8.3 20 10.5V17H17V11C17 9.9 16.5 9 15.5 9C14.5 9 14 9.9 14 11V17H11V7Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 4.74C18.37 5.01 17.7 5.19 17 5.28C17.71 4.86 18.25 4.19 18.5 3.38C17.83 3.77 17.09 4.05 16.31 4.2C15.67 3.53 14.77 3.11 13.77 3.11C11.85 3.11 10.29 4.67 10.29 6.59C10.29 6.86 10.32 7.12 10.38 7.37C7.47 7.23 4.89 5.84 3.16 3.73C2.87 4.27 2.7 4.86 2.7 5.5C2.7 6.69 3.31 7.74 4.23 8.36C3.66 8.34 3.13 8.19 2.67 7.94V7.98C2.67 9.66 3.87 11.06 5.46 11.38C5.18 11.46 4.88 11.5 4.58 11.5C4.36 11.5 4.15 11.48 3.94 11.44C4.37 12.82 5.66 13.83 7.19 13.86C6 14.8 4.48 15.35 2.83 15.35C2.55 15.35 2.28 15.33 2 15.3C3.55 16.29 5.39 16.87 7.38 16.87C13.77 16.87 17.26 11.56 17.26 6.99C17.26 6.84 17.26 6.69 17.25 6.54C17.93 6.06 18.5 5.45 19 4.74Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 10C18 5.58 14.42 2 10 2C5.58 2 2 5.58 2 10C2 13.99 4.88 17.32 8.69 17.91V12.56H6.89V10H8.69V8.12C8.69 6.35 9.92 5.19 11.54 5.19C12.32 5.19 13.13 5.33 13.13 5.33V7.06H12.24C11.36 7.06 11.06 7.62 11.06 8.19V10H13.05L12.72 12.56H11.06V17.91C14.87 17.32 18 13.99 18 10Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 6.87C8.28 6.87 6.87 8.28 6.87 10C6.87 11.72 8.28 13.13 10 13.13C11.72 13.13 13.13 11.72 13.13 10C13.13 8.28 11.72 6.87 10 6.87ZM10 11.87C9.01 11.87 8.13 10.99 8.13 10C8.13 9.01 9.01 8.13 10 8.13C10.99 8.13 11.87 9.01 11.87 10C11.87 10.99 10.99 11.87 10 11.87ZM14.12 6.73C14.12 7.13 13.79 7.46 13.39 7.46C12.99 7.46 12.66 7.13 12.66 6.73C12.66 6.33 12.99 6 13.39 6C13.79 6 14.12 6.33 14.12 6.73ZM16.94 7.47C16.89 6.53 16.68 5.7 16 5.02C15.32 4.34 14.49 4.13 13.55 4.08C12.58 4.03 7.42 4.03 6.45 4.08C5.51 4.13 4.68 4.34 4 5.02C3.32 5.7 3.11 6.53 3.06 7.47C3.01 8.44 3.01 13.56 3.06 14.53C3.11 15.47 3.32 16.3 4 16.98C4.68 17.66 5.51 17.87 6.45 17.92C7.42 17.97 12.58 17.97 13.55 17.92C14.49 17.87 15.32 17.66 16 16.98C16.68 16.3 16.89 15.47 16.94 14.53C16.99 13.56 16.99 8.44 16.94 7.47ZM15.43 15.56C15.23 16.11 14.81 16.53 14.26 16.73C13.49 16.98 11.62 16.91 10 16.91C8.38 16.91 6.51 16.98 5.74 16.73C5.19 16.53 4.77 16.11 4.57 15.56C4.32 14.79 4.39 12.92 4.39 11.3C4.39 9.68 4.32 7.81 4.57 7.04C4.77 6.49 5.19 6.07 5.74 5.87C6.51 5.62 8.38 5.69 10 5.69C11.62 5.69 13.49 5.62 14.26 5.87C14.81 6.07 15.23 6.49 15.43 7.04C15.68 7.81 15.61 9.68 15.61 11.3C15.61 12.92 15.68 14.79 15.43 15.56Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4 class="footer-heading">Produto</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Recursos</a></li>
+            <li><a href="#pricing">Preços</a></li>
+            <li><a href="#">Documentação da API</a></li>
+            <li><a href="#">Integrações</a></li>
+            <li><a href="#">Registro de Alterações</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4 class="footer-heading">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Carreiras</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#">Imprensa</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4 class="footer-heading">Newsletter</h4>
+          <p class="newsletter-description">Fique por dentro das últimas novidades e insights sobre gestão de energia</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Digite seu e-mail" required>
+            <button type="submit" class="btn btn-primary">Inscreva-se</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="#">Politíca de Privacidade</a>
+          <span class="separator">•</span>
+          <a href="terms.html">Termos de Uso</a>
+          <span class="separator">•</span>
+          <a href="#contact">Contato</a>
+        </div>
+        <p class="footer-copyright">© 2025 EnergyFlow. Todos direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="src/javascript/script.js"></script>
+  <script src="src/javascript/view.js"></script>
+</body>
+</html>

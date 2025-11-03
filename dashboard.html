@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>EnergyFlow - Dashboard</title>
+      <link rel="stylesheet" href="src/css/dash.css">
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+
+    <body>
+      <div class="dashboard-container">
+        <header class="header">
+          <div class="header-content">
+            <button id="hamburgerBtn" class="hamburger">&#9776;</button>
+            <div class="logo-container">
+              <a href="index.html"><img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-1.svg" alt="EnergyFlow Icon" /></a>
+              <span>EnergyFlow</span>
+            </div>
+            <div class="user-info">
+              <span id="user-name" class="user-role">Carregando...</span>
+              <img id="user-avatar" src="https://via.placeholder.com/32/3B82F6/FFFFFF?text=U" alt="User Avatar" class="user-avatar">
+            </div>
+          </div>
+        </header>
+
+        <aside class="sidebar">
+          <div class="mobile-logo">
+              <a href="index.html"><img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-1.svg" alt="EnergyFlow Icon" /></a>
+              <span>EnergyFlow</span>
+          </div>
+          <nav class="sidebar-nav">
+            <ul>
+              <li><a href="#" class="nav-item active" data-page="dashboard">
+                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-7.svg" alt="Dashboard Icon" class="nav-icon">
+                Dashboard
+              </a></li>
+              <li><a href="#" class="nav-item" data-page="devices">
+                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-5.svg" alt="Devices Icon" class="nav-icon">
+                Dispositivos
+              </a></li>
+              <li><a href="#" class="nav-item" data-page="reports">
+                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-4.svg" alt="Reports Icon" class="nav-icon">
+                Relatórios
+              </a></li>
+              <li><a href="#" class="nav-item" data-page="settings">
+                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-6.svg" alt="Settings Icon" class="nav-icon">
+                Configurações
+              </a></li>
+              <button id="logoutBtn" class="btn btn-secondary">Sair</button>
+            </ul>
+          </nav>
+        </aside>
+
+        <main class="main-content">
+          <section id="dashboard-page" class="page-content active">
+            <h1>Visão Geral</h1>
+            <div class="dashboard-metrics">
+              <div class="metric-card">
+                <h3>Consumo Total Atual</h3>
+                <p class="metric-value" id="total-consumption">0 W</p>
+              </div>
+              <div class="metric-card">
+                <h3>Maior Consumo (Período)</h3>
+                <p class="metric-value" id="highest-consumption">0 W</p>
+              </div>
+              <div class="metric-card">
+                <h3>Menor Consumo (Período)</h3>
+                <p class="metric-value" id="lowest-consumption">0 W</p>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <h2>Consumo em Tempo Real</h2>
+              <div class="chart-container">
+                <canvas id="realtime-chart"></canvas>
+              </div>
+            </div>
+
+            <h2>Status dos Dispositivos</h2>
+            <div class="device-grid">
+              <div class="device-card">
+                <div class="device-header">
+                  <span class="device-name">Luzes da Sala de Estar</span>
+                  <span class="device-status active">Online</span>
+                </div>
+                <p class="device-usage" id="device-1-usage">0 W</p>
+                <button class="device-action-btn">Ver Detalhes</button>
+              </div>
+              <div class="device-card">
+                <div class="device-header">
+                  <span class="device-name">Geladeira da Cozinha</span>
+                  <span class="device-status active">Online</span>
+                </div>
+                <p class="device-usage" id="device-2-usage">0 W</p>
+                <button class="device-action-btn">Ver Detalhes</button>
+              </div>
+              <div class="device-card">
+                <div class="device-header">
+                  <span class="device-name">Ar Condicionado do Escritório</span>
+                  <span class="device-status inactive">Offline</span>
+                </div>
+                <p class="device-usage" id="device-3-usage">0 W</p>
+                <button class="device-action-btn">Ver Detalhes</button>
+              </div>
+              <div class="device-card">
+                <div class="device-header">
+                  <span class="device-name">Servidor</span>
+                  <span class="device-status active">Online</span>
+                </div>
+                <p class="device-usage" id="device-4-usage">0 W</p>
+                <button class="device-action-btn">Ver Detalhes</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- gerenciamento -->
+          <section id="devices-page" class="page-content">
+            <h1>Gerenciamento de Dispositivos</h1>
+            <button class="button-primary add-device-btn">Adicionar Dispositivo</button>
+
+            <div class="table-card">
+              <h2>Todos Dispositivos</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID do Dispositivo</th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Status</th>
+                    <th>Consumo Atual (W)</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>DISP001</td>
+                    <td>Luzes da Sala de Estar</td>
+                    <td>Iluminação</td>
+                    <td><span class="device-status active">Online</span></td>
+                    <td id="table-device-1-usage">0</td>
+                    <td>
+                      <button class="button-secondary small">Editar</button>
+                      <button class="button-danger small">Remover</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DISP002</td>
+                    <td>Geladeira da Cozinha</td>
+                    <td>Eletrodoméstico</td>
+                    <td><span class="device-status active">Online</span></td>
+                    <td id="table-device-2-usage">0</td>
+                    <td>
+                      <button class="button-secondary small">Editar</button>
+                      <button class="button-danger small">Remover</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DISP003</td>
+                    <td>Ar Condicionado do Escritório</td>
+                    <td>AC</td>
+                    <td><span class="device-status inactive">Offline</span></td>
+                    <td id="table-device-3-usage">0</td>
+                    <td>
+                      <button class="button-secondary small">Editar</button>
+                      <button class="button-danger small">Remover</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DISP004</td>
+                    <td>Servidor</td>
+                    <td>Equipamento de TI</td>
+                    <td><span class="device-status active">Online</span></td>
+                    <td id="table-device-4-usage">0</td>
+                    <td>
+                      <button class="button-secondary small">Editar</button>
+                      <button class="button-danger small">Remover</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- relatorios -->
+          <section id="reports-page" class="page-content">
+            <h1>Relatórios de Energia</h1>
+            <div class="report-filters">
+              <div class="form-group">
+                <label for="start-date">Início:</label>
+                <input type="date" id="start-date" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="end-date">Fim:</label>
+                <input type="date" id="end-date" class="form-input">
+              </div>
+              <button class="button-primary">Gerar Relatório</button>
+            </div>
+
+            <div class="table-card">
+              <h2>Resumo dos Dados de Consumo</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data/Hora</th>
+                    <th>Consumo Min (W)</th>
+                    <th>Consumo Max(W)</th>
+                    <th>Consumo Médio (W)</th>
+                  </tr>
+                </thead>
+                <tbody id="reports-table-body">
+                  <tr>
+                    <td>01-01-2025 10:00</td>
+                    <td>150</td>
+                    <td>300</td>
+                    <td>220</td>
+                  </tr>
+                  <tr>
+                    <td>01-01-2025 10:10</td>
+                    <td>160</td>
+                    <td>320</td>
+                    <td>240</td>
+                  </tr>
+                  <tr>
+                    <td>01-01-2025 10:20</td>
+                    <td>140</td>
+                    <td>280</td>
+                    <td>200</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- configurações -->
+          <section id="settings-page" class="page-content">
+            <h1>Configurações</h1>
+            <div class="settings-section">
+              <h2>Perfil do Usuário</h2>
+              <div class="form-group">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" value="admin" class="form-input" disabled>
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" value="admin@energyflow.com" class="form-input" disabled>
+              </div>
+              <button class="button-primary">Mudar Senha</button>
+            </div>
+
+            <div class="settings-section">
+              <h2>Preferências do Sistema</h2>
+              <div class="form-group">
+                <label for="refresh-rate">Taxa de atualização do painel (segundos):</label>
+                <input type="number" id="refresh-rate" value="5" min="1" class="form-input">
+              </div>
+              <button class="button-primary">Salvar Preferências</button>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <script src="src/javascript/dashboard.js"></script>
+    </body>
+    </html>
