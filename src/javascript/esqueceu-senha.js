@@ -44,7 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify({ email })
             });
 
-            const data = await response.text();
+            let data;
+                try {
+                    data = await response.json(); 
+                } catch {
+                    data = await response.text();
+                }
 
             if (response.ok) {
                 showAlert(data, 'success');
