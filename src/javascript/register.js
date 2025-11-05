@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const BACKEND_URL = 'https://energyflow-backend-i3xs.onrender.com';
+  const BACKEND_URL = 'http://localhost:8080';
 
   const registerForm = document.getElementById('registerForm');
   const firstNameInput = document.getElementById('firstName');

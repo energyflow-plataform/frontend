@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="src/img/energy.png">
+  <title>EnergyFlow - Cadastrar Unidade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="src/css/auth.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="header-content">
+        <div class="logo">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#10B981"/>
+            <path d="M20 10L28 18H24V30H16V18H12L20 10Z" fill="white"/>
+            <circle cx="20" cy="24" r="2" fill="#10B981"/>
+          </svg>
+          <a href="dashboard.html"><span class="logo-text">EnergyFlow</span></a>
+        </div>
+        <div>
+          <a href="ambiente.html" class="header-link">Cadastrar Ambiente</a>
+          <a href="dashboard.html" class="header-link">Voltar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="background-gradient"></div>
+
+    <div class="form-container">
+      <div class="form-card">
+        <div class="form-header">
+          <h1 class="form-title">Cadastrar Unidade</h1>
+          <p class="form-subtitle">Registre uma nova unidade para monitorar</p>
+        </div>
+
+        <div id="alert" class="alert"></div>
+
+        <form id="formUnidade" class="form">
+          
+          <div class="form-group">
+            <label for="nomeUnidade" class="form-label">Nome</label>
+            <input type="text" id="nomeUnidade" name="nomeUnidade" placeholder="Ex: Matriz São Paulo" class="form-input" required />
+            <span class="error-message" id="nomeUnidadeError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="codigoAcesso" class="form-label">Código de Acesso</label>
+            <input type="password" id="codigoAcesso" name="codigoAcesso" placeholder="Digite o código para acessar a unidade" class="form-input" />
+            <span class="error-message" id="codigoAcessoError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="cep" class="form-label">CEP</label>
+            <input type="text" id="cep" name="cep" placeholder="Ex: 01001-000" class="form-input" maxlength="9" />
+            <span class="error-message" id="cepError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="numero" class="form-label">Número</label>
+            <input type="text" id="numero" name="numero" placeholder="Digite o número do endereço" class="form-input" maxlength="9" />
+            <span class="error-message" id="numeroError"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Cadastrar Unidade</button>
+        </form>
+        <script src="src/javascript/unidade.js"></script>
+        </body>
+        </html>

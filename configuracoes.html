@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="src/img/energy.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações do Usuário | EnergyFlow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/configuracoes.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+          <div class="header-content">
+            <div class="logo">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="#10B981"/>
+                <path d="M20 10L28 18H24V30H16V18H12L20 10Z" fill="white"/>
+                <circle cx="20" cy="24" r="2" fill="#10B981"/>
+              </svg>
+              <a href="dashboard.html"><span class="logo-text">EnergyFlow</span></a>
+            </div>
+            <a href="dashboard.html" class="header-link">Voltar</a>
+          </div>
+        </div>
+      </header>
+
+  <main class="main-content">
+    <div class="background-gradient"></div>
+
+    <div class="form-container">
+      <div class="form-card">
+        <div class="form-header">
+          <h2 class="form-title">Configurações do Usuário</h2>
+          <p class="form-subtitle">Gerencie suas informações pessoais e de acesso</p>
+        </div>
+
+        <form class="form">
+          <div class="profile-section">
+            <img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto de Perfil" class="profile-image">
+            <label for="fileInput" class="upload-btn">Alterar Foto</label>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="nome">Nome Completo</label>
+            <input class="form-input" type="text" id="nome" placeholder="Seu nome completo">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-input" type="email" id="email" placeholder="exemplo@email.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="senhaAtual">Senha Atual</label>
+            <input class="form-input" type="password" id="senhaAtual" placeholder="Digite sua senha atual">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="novaSenha">Nova Senha</label>
+            <input class="form-input" type="password" id="novaSenha" placeholder="Nova senha">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirmarSenha">Confirmar Nova Senha</label>
+            <input class="form-input" type="password" id="confirmarSenha" placeholder="Confirme a nova senha">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const profileImage = document.getElementById("profileImage");
+
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) profileImage.src = URL.createObjectURL(file);
+    });
+  </script>
+</body>
+</html>

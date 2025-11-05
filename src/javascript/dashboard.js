@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  
   // 🔹 Recupera os dados do usuário
   const usuarioData = localStorage.getItem('usuario');
 
@@ -32,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'login.html';
     });
   }
+
+      document.querySelectorAll('.feature-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const url = card.getAttribute('data-url');
+          window.location.href = url;
+        });
+      });
 
       const mainContent = document.querySelector('.main-content');
       const navItems = document.querySelectorAll('.nav-item');

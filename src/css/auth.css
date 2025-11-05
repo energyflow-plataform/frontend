@@ -12,6 +12,7 @@
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s;
+  margin-left: 1rem;
 }
 
 .header-link:hover {

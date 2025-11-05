@@ -3,6 +3,7 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/png" href="src/img/energy.png">
       <title>EnergyFlow - Dashboard</title>
       <link rel="icon" type="image/png" href="src/img/energy.png">
       <link rel="stylesheet" href="src/css/dash.css">
@@ -38,7 +39,7 @@
               </a></li>
               <li><a href="#" class="nav-item" data-page="devices">
                 <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-5.svg" alt="Devices Icon" class="nav-icon">
-                Dispositivos
+                Gerenciamento
               </a></li>
               <li><a href="#" class="nav-item" data-page="reports">
                 <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-4.svg" alt="Reports Icon" class="nav-icon">
@@ -117,7 +118,101 @@
 
           <!-- gerenciamento -->
           <section id="devices-page" class="page-content">
-            <h1>Gerenciamento de Dispositivos</h1>
+            <div class="container">
+              <div>
+                <h1>Gerenciamento de Recursos</h1> 
+                </div>
+                <div>
+                  <p>Organize e acompanhe todos os recursos da sua empresa de forma centralizada.br
+                    Aqui você pode cadastrar <strong>unidades, ambientes e dispositivos</strong>, garantindo um <strong>controle completo</strong> sobre sua infraestrutura.
+                    Mantenha as informações sempre atualizadas para facilitar o <strong>monitoramento</strong> e a gestão eficiente dos seus recursos.</p>
+                </div>
+              <div class="features-grid">
+                <div class="feature-card" data-url="unidade.html">
+                  <div class="feature-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 4V28M4 16H28" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="16" cy="16" r="10" stroke="#10B981" stroke-width="2"/>
+                    </svg>
+                  </div>
+                    <h3 class="feature-title">Unidades</h3>
+                    <p class="feature-description">Cadastre as unidades da sua empresa</p>
+                </div>
+            
+              <div class="feature-card" data-url="ambiente.html">
+                <div class="feature-icon">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 8V16L20 20" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="10" stroke="#3B82F6" stroke-width="2"/>
+                  </svg>
+                </div>
+                  <h3 class="feature-title">Ambientes</h3>
+                  <p class="feature-description">Cadastre os ambientes das suas unidades</p>
+                </div>
+              
+              <div class="feature-card" data-url="dispositivo.html">
+                <div class="feature-icon">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="10" width="20" height="16" rx="2" stroke="#10B981" stroke-width="2"/>
+                    <path d="M10 6V10M22 6V10M6 14H26" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                  <h3 class="feature-title">Dispositivos</h3>
+                  <p class="feature-description">Cadastre os dispositivos dos seus ambientes</p>
+                </div>
+              </div>
+              <div class="table-card">
+                <h2>Unidades Cadastradas</h2>
+                <table id="tabelaUnidades">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Código de Acesso</th>
+                      <th>CEP</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+
+              <div class="table-card">
+                <h2>Ambientes Cadastrados</h2>
+                <table id="tabelaAmbientes">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Unidade</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+
+              <div class="table-card">
+                <h2>Dispositivos Cadastrados</h2>
+                <table id="tabelaDispositivos">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Tipo</th>
+                      <th>Ambiente</th>
+                      <th>Status</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+
+              <div id="alert" class="alert"></div>
+            </div>
+            </div>
+            <!-- <h1>Gerenciamento de Dispositivos</h1> 
             <button class="button-primary add-device-btn">Adicionar Dispositivo</button>
 
             <div class="table-card">
@@ -180,7 +275,7 @@
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </div> -->
           </section>
 
           <!-- relatorios -->
@@ -258,9 +353,7 @@
               <button class="button-primary">Salvar Preferências</button>
             </div>
           </section>
-        </main>
-      </div>
-
       <script src="src/javascript/dashboard.js"></script>
+      <script src="src/javascript/registros.js"></script>
     </body>
     </html>

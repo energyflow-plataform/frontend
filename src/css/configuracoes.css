@@ -1,0 +1,201 @@
+@import url('styles.css'); /* mantém o padrão visual global */
+
+/* ===== Estrutura ===== */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+/* ===== Header ===== */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 10;
+  padding: 1rem 0;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo + texto */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logo svg {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #10b981;
+  text-decoration: none;
+}
+
+/* Link Voltar */
+.header-link {
+  color: #10b981;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header-link:hover {
+  color: #059669;
+}
+
+
+/* ===== Main ===== */
+.main-content {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+
+.background-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgb(236, 253, 245) 0%, rgb(239, 246, 255) 100%);
+  z-index: -1;
+}
+
+/* ===== Form ===== */
+.form-container {
+  max-width: 32rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.form-card {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+/* ===== Perfil ===== */
+.profile-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.upload-btn {
+  background-color: #10b981;
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.upload-btn:hover {
+  background-color: #059669;
+}
+
+/* ===== Inputs ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.form-input {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.9375rem;
+  color: #111827;
+  transition: border 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 1px #10b981;
+}
+
+/* ===== Botão ===== */
+.btn {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: #10b981;
+  color: white;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #059669;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 640px) {
+  .form-card {
+    padding: 1.5rem;
+  }
+  .form-title {
+    font-size: 1.5rem;
+  }
+}
