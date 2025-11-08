@@ -116,7 +116,83 @@
             </div>
           </section>
 
-          <!-- gerenciamento -->
+          <!-- relatorios -->
+          <section id="reports-page" class="page-content">
+            <h1>Relatórios de Energia</h1>
+            <div class="report-filters">
+              <div class="form-group">
+                <label for="start-date">Início:</label>
+                <input type="date" id="start-date" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="end-date">Fim:</label>
+                <input type="date" id="end-date" class="form-input">
+              </div>
+              <button class="button-primary">Gerar Relatório</button>
+            </div>
+
+            <div class="table-card">
+              <h2>Resumo dos Dados de Consumo</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data/Hora</th>
+                    <th>Consumo Min (W)</th>
+                    <th>Consumo Max(W)</th>
+                    <th>Consumo Médio (W)</th>
+                  </tr>
+                </thead>
+                <tbody id="reports-table-body">
+                  <tr>
+                    <td>01-01-2025 10:00</td>
+                    <td>150</td>
+                    <td>300</td>
+                    <td>220</td>
+                  </tr>
+                  <tr>
+                    <td>01-01-2025 10:10</td>
+                    <td>160</td>
+                    <td>320</td>
+                    <td>240</td>
+                  </tr>
+                  <tr>
+                    <td>01-01-2025 10:20</td>
+                    <td>140</td>
+                    <td>280</td>
+                    <td>200</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- configurações -->
+          <section id="settings-page" class="page-content">
+            <h1>Configurações</h1>
+            <div class="settings-section">
+              <h2>Perfil do Usuário</h2>
+              <div class="form-group">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" value="admin" class="form-input" disabled>
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" value="admin@energyflow.com" class="form-input" disabled>
+              </div>
+              <button class="button-primary">Mudar Senha</button>
+            </div>
+
+            <div class="settings-section">
+              <h2>Preferências do Sistema</h2>
+              <div class="form-group">
+                <label for="refresh-rate">Taxa de atualização do painel (segundos):</label>
+                <input type="number" id="refresh-rate" value="5" min="1" class="form-input">
+              </div>
+              <button class="button-primary">Salvar Preferências</button>
+            </div>
+          </section>
+
+           <!-- gerenciamento -->
           <section id="devices-page" class="page-content">
             <div class="container">
               <div>
@@ -277,82 +353,7 @@
               </table>
             </div> -->
           </section>
-
-          <!-- relatorios -->
-          <section id="reports-page" class="page-content">
-            <h1>Relatórios de Energia</h1>
-            <div class="report-filters">
-              <div class="form-group">
-                <label for="start-date">Início:</label>
-                <input type="date" id="start-date" class="form-input">
-              </div>
-              <div class="form-group">
-                <label for="end-date">Fim:</label>
-                <input type="date" id="end-date" class="form-input">
-              </div>
-              <button class="button-primary">Gerar Relatório</button>
-            </div>
-
-            <div class="table-card">
-              <h2>Resumo dos Dados de Consumo</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Data/Hora</th>
-                    <th>Consumo Min (W)</th>
-                    <th>Consumo Max(W)</th>
-                    <th>Consumo Médio (W)</th>
-                  </tr>
-                </thead>
-                <tbody id="reports-table-body">
-                  <tr>
-                    <td>01-01-2025 10:00</td>
-                    <td>150</td>
-                    <td>300</td>
-                    <td>220</td>
-                  </tr>
-                  <tr>
-                    <td>01-01-2025 10:10</td>
-                    <td>160</td>
-                    <td>320</td>
-                    <td>240</td>
-                  </tr>
-                  <tr>
-                    <td>01-01-2025 10:20</td>
-                    <td>140</td>
-                    <td>280</td>
-                    <td>200</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <!-- configurações -->
-          <section id="settings-page" class="page-content">
-            <h1>Configurações</h1>
-            <div class="settings-section">
-              <h2>Perfil do Usuário</h2>
-              <div class="form-group">
-                <label for="username">Nome de Usuário:</label>
-                <input type="text" id="username" value="admin" class="form-input" disabled>
-              </div>
-              <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" value="admin@energyflow.com" class="form-input" disabled>
-              </div>
-              <button class="button-primary">Mudar Senha</button>
-            </div>
-
-            <div class="settings-section">
-              <h2>Preferências do Sistema</h2>
-              <div class="form-group">
-                <label for="refresh-rate">Taxa de atualização do painel (segundos):</label>
-                <input type="number" id="refresh-rate" value="5" min="1" class="form-input">
-              </div>
-              <button class="button-primary">Salvar Preferências</button>
-            </div>
-          </section>
+          
       <script src="src/javascript/dashboard.js"></script>
       <script src="src/javascript/registros.js"></script>
     </body>
