@@ -1,0 +1,206 @@
+<header class="bg-white z-40 border-b border-gray-200 px-6 lg:px-8 py-4">
+  <div class="flex justify-between">
+    <div>
+      <h2 class="padding-2 text-2xl font-semibold text-gray-900">
+        Unidades
+      </h2>
+    </div>
+    <div
+      class="w-10 h-10 rounded-full bg-gradient-1 flex items-center justify-center text-white font-semibold cursor-pointer"
+      role="button" aria-label="User profile">
+      QA
+    </div>
+  </div>
+</header>
+
+<div class="px-6 lg:px-8 py-8 lg:py-12">
+  <div>
+    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Gerenciamento de unidades</h2>
+    <p style="color: var(--text-secondary);">Visualize e gerencie todas suas unidades</p>
+  </div>
+  <div id="alert-main" class="alert"></div>
+  <!-- cards com as estatisticas -->
+  <div class="px-6 lg:px-8 py-8 lg:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" aria-label="Key statistics">
+      <!-- total de unidades -->
+      <article
+        class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 hover:border-primary transition-smooth">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-12 h-12 rounded bg-primary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <h3 id="totalUnits" class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+          5
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+          Unidades
+        </p>
+      </article>
+    </div>
+    
+    <!-- tabela com todas as unidades -->
+    <section class="bg-white dark:bg-gray-800 rounded p-6 lg:p-8 border border-gray-200 dark:border-gray-700"
+      aria-label="Units table">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 md:mb-0">
+          Todas Unidades
+        </h3>
+        <div class="flex flex-row gap-6">
+          <div class="hidden md:block">
+            <input type="search" id="searchInput" placeholder="Procurar unidades..."
+              class="px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-normal text-sm w-64"
+              aria-label="Search units">
+          </div>
+          <button id="addUnitBtn" class="btn btn-primary" aria-label="Add new unit">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Nova Unidade
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full" id="unitsTable">
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Nome da Unidade
+              </th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Código de Acesso
+              </th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                CEP
+              </th>
+
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Ações
+              </th>
+            </tr>
+          </thead>
+          <tbody id="unitsTableBody">
+            <!-- colunas da tabela vão ser inseridas aqui pelo javascript -->
+          </tbody>
+        </table>
+
+        <!-- caso esteja vazio -->
+        <div id="emptyState" class="empty-state" style="display: none">
+          <svg class="empty-state-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+            </path>
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+            Nenhuma unidade encontrada
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Comece adicionando sua primeira unidade
+          </p>
+          <button class="btn btn-primary" onclick="openAddModal()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Adicione sua primeira unidade
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- modal adicionar/editar unidade -->
+<div id="unitModal" class="modal">
+  <div class="modal-content">
+    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+      <div class="flex items-center justify-between">
+        <h3 id="modalTitle" class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          Nova Unidade
+        </h3>
+        <button id="closeModalBtn" class="btn-icon" aria-label="Fechar modal">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="alert" class="alert"></div>
+    <!-- form -->
+    <form id="unitForm" class="p-6">
+      <input type="hidden" id="unitId" />
+      <div class="form-group">
+        <label for="unitName" class="form-label"></label>
+        <input type="text" id="unitName" class="form-input" placeholder="Ex: Prédio A" required />
+        <span class="error-message" id="unitNameError"></span>
+      </div>
+      <div class="form-group">
+        <label for="unitCode" class="form-label"></label>
+        <input type="text" id="unitCode" class="form-input" placeholder="Ex: BLD-A-001" required />
+        <span class="error-message" id="unitCodeError"></span>
+      </div>
+      <div class="form-group">
+        <label for="cep" class="form-label"></label>
+        <input type="text" id="cep" class="form-input" placeholder="00000-000" maxlength="9" required />
+        <span class="error-message" id="cepError"></span>
+      </div>
+      <div class="form-group">
+        <label for="numero" class="form-label"></label>
+        <input type="text" id="numero" class="form-input" placeholder="Ex: 100" required />
+        <span class="error-message" id="numeroError"></span>
+      </div>
+      <div class="form-group">
+        <label for="logradouro" class="form-label"></label>
+        <input type="text" id="logradouro" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="Rua Exemplo"
+          readonly />
+      </div>
+      <div class="form-group">
+        <label for="bairro" class="form-label"></label>
+        <input type="text" id="bairro" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="Centro" readonly />
+      </div>
+      <div class="form-group">
+        <label for="cidade" class="form-label"></label>
+        <input type="text" id="cidade" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="São Paulo"
+          readonly />
+      </div>
+      <div class="form-group">
+        <label for="estado" class="form-label"></label>
+        <input type="text" id="estado" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="SP" readonly />
+      </div>
+      <div class="flex gap-3 justify-end mt-6">
+        <button type="button" class="btn btn-secondary" id="cancelBtn"></button>
+        <button type="submit" class="btn btn-primary" id="saveBtn"></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- modal para apagar unidade -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <div class="p-6">
+      <div class="flex items-start gap-4 mb-6">
+        <div
+          class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center flex-shrink-0">
+          <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+            </path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2"></h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400"></p>
+        </div>
+      </div>
+      <div class="flex gap-3 justify-end">
+        <button type="button" class="btn btn-secondary" id="cancelDeleteBtn"></button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn"></button>
+      </div>
+    </div>
+  </div>
+</div>

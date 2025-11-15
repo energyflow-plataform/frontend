@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Energy Monitoring Dashboard - Track and manage your energy consumption with real-time data visualization and device monitoring."
+    />
+    <title>Energy Monitoring Dashboard</title>
+    <link rel="stylesheet" href="src/css/overview.css"/>
+    <link rel="stylesheet" href="src/css/units.css"/>
+  </head>
+  <body class="font-sans theme-transition">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="fixed left-0 top-0 h-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 sidebar-transition z-50"
+      style="width: 240px"
+    >
+      <div class="flex flex-col h-full">
+        <!-- Logo -->
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+          <h1 class="row text-xl font-semibold text-gray-900 dark:text-gray-100">
+            <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12V8.964"/><path d="M14 12V8.964"/><path d="M15 12a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2a1 1 0 0 1 1-1z"/><path d="M8.5 21H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2v-2"/></svg>
+            EnergyFlow
+          </h1>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 p-4" role="navigation" aria-label="Main navigation">
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#" data-section="overview"
+                class="active nav-item active flex items-center gap-3 px-4 py-3 rounded text-primary bg-primary/10 font-normal transition-smooth cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  ></path>
+                </svg>
+                <span>Visão Geral</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#" data-section="units"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  ></path>
+                </svg>
+                <span>Unidades</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#" data-section="rooms"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                  class="w-5 h-5"
+                  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="7" height="7" x="3" y="3" rx="1"/>
+                  <rect width="7" height="7" x="14" y="3" rx="1"/>
+                  <rect width="7" height="7" x="14" y="14" rx="1"/>
+                  <rect width="7" height="7" x="3" y="14" rx="1"/>
+                </svg>
+                
+                <span>Ambientes</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#" data-section="devices"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <span>Dispositivos</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#" data-section="reports"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  ></path>
+                </svg>
+                <span>Relatórios</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#" data-section="settings"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+                <span>Configurações</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Dark Mode Toggle -->
+        <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+          <div class="row user-info">
+            <div>
+              <img id="user-avatar" src="https://via.placeholder.com/32/3B82F6/FFFFFF?text=U" alt="User Avatar" class="user-avatar">
+              <span id="user-name" class="user-role">Carregando...</span>
+            </div>
+              <button
+            id="darkModeToggle"
+            class="flex justify-center items-center rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer w-full"
+            aria-label="Toggle dark mode"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              ></path>
+            </svg>
+          </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      id="mobileMenuToggle"
+      class="fixed top-4 left-4 z-50 lg:hidden bg-white dark:bg-gray-900 p-3 rounded border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+      aria-label="Toggle mobile menu"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- Main Content -->
+    <main id="main-content" class="lg:ml-60 min-h-screen">
+
+      </main>
+    <!-- Chart.js CDN -->
+    
+    <script src="src/js/dash.js"></script>
+    <script src="src/js/units.js"></script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<header class="bg-white z-40 border-b border-gray-200 px-6 lg:px-8 py-4">
+  <div class="flex justify-between">
+    <div>
+      <h2 class="padding-2 text-2xl font-semibold text-gray-900">
+        Dispositivos
+      </h2>
+    </div>
+    <div
+      class="w-10 h-10 rounded-full bg-gradient-1 flex items-center justify-center text-white font-semibold cursor-pointer"
+      role="button" aria-label="User profile">
+      QA
+    </div>
+  </div>
+</header>
+
+<div class="px-6 lg:px-8 py-8 lg:py-12">
+  <div>
+    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Gerenciamento de Dispositivos</h2>
+    <p style="color: var(--text-secondary);">Visualize e gerencie todos os dispositivos do sistema</p>
+  </div>
+<div id="alert-main" class="alert"></div>
+  <!-- cards de estatisticas -->
+  <div class="px-6 lg:px-8 py-8 lg:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" aria-label="Key statistics">
+      <!-- total de dispositivos -->
+      <article
+        class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700  hover:border-primary transition-smooth">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-12 h-12 rounded bg-secondary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1" id="totalDevices">156</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+          Dispositivos
+        </p>
+      </article>
+      <!-- dispositivos ativos -->
+      <article
+        class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 hover:border-primary transition-smooth">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-12 h-12 rounded bg-success/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1" id="activeDevices"></h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+          Dispositivos Ativos
+        </p>
+      </article>
+
+      <article
+        class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 hover:border-primary transition-smooth">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-12 h-12 rounded bg-success/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path>
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1" id="inactiveDevices"></h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+          Dispositivos Inativos
+        </p>
+      </article>
+    </div>
+    <div id="alert-main" class="alert"></div>
+    <!-- tabela com todos dispositivos -->
+    <section class="bg-white dark:bg-gray-800 rounded p-6 lg:p-8 border border-gray-200 dark:border-gray-700"
+      aria-label="Devices table">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 md:mb-0">
+          Todos Dispositivos
+        </h3>
+        <div class="flex flex-row gap-6">
+          <div class="hidden md:block">
+            <input type="search" id="searchDeviceInput" placeholder="Procurar dispositivos..."
+              class="px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-normal text-sm w-64"
+              aria-label="Search devices">
+          </div>
+          <button id="addDeviceBtn" class="btn btn-primary" aria-label="Add new device">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Novo Dispositivo
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full" id="devicesTable">
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Nome do Dispositivo
+              </th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Tipo</th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Potência</th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Ambiente</th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Status</th>
+              <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="devicesTableBody">
+            <!-- colunas da tabela vão ser inseridas aqui pelo javascript -->
+          </tbody>
+        </table>
+
+        <!-- caso não tenha dispositivos-->
+        <div id="emptyDevicesState" class="empty-state" style="display: none">
+          <svg class="empty-state-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Nenhum dispositivo encontrado</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Comece adicionando seu primeiro dispositivo
+          </p>
+          <button class="btn btn-primary" onclick="DevicesModule.openAddModal()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Adicione seu primeiro dispositivo
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- modal adicionar/editar dispositivo -->
+  <div id="deviceModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+        <h3 id="deviceModalTitle" class="text-xl font-semibold text-gray-900 dark:text-gray-100">Novo Dispositivo</h3>
+        <button id="closeDeviceModalBtn" class="btn-icon" aria-label="Close modal">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="alert" class="alert"></div>
+      <!-- form -->
+      <form id="deviceForm" class="p-6">
+        <input type="hidden" id="deviceId" />
+        <div class="form-group">
+          <label for="deviceName" class="form-label"></label>
+          <input type="text" id="deviceName" class="form-input" placeholder="Ex: Sensor Sala 101" required />
+        </div>
+        <div class="form-group">
+          <label for="deviceCode" class="form-label"></label>
+          <input type="text" id="deviceCode" class="form-input" placeholder="Ex: TMP-RM101-001" required />
+        </div>
+        <div class="form-group">
+          <label for="deviceEnvironment" class="form-label"></label>
+          <input type="text" id="deviceEnvironment" class="form-input" placeholder="Ex: Sala 101" required />
+        </div>
+        <div class="form-group">
+          <label for="deviceStatus" class="form-label"></label>
+          <select id="deviceStatus" class="form-select" required>
+            <option value="active"></option>
+            <option value="inactive"></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="deviceDescription" class="form-label"></label>
+          <textarea id="deviceDescription" class="form-input" rows="3" placeholder="Descrição opcional..."></textarea>
+        </div>
+        <div class="flex gap-3 justify-end">
+          <button type="button" class="btn btn-secondary" id="cancelDeviceBtn"></button>
+          <button type="submit" class="btn btn-primary" id="saveDeviceBtn"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- modal para pagar dispostivo -->
+  <div id="deleteDeviceModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="flex items-start gap-4 mb-6">
+          <div
+            class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2"></h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400"></p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 justify-end">
+          <button type="button" class="btn btn-secondary" id="cancelDeleteDeviceBtn"></button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteDeviceBtn"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

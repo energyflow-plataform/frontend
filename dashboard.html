@@ -1,360 +1,435 @@
 <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" type="image/png" href="src/img/energy.png">
-      <title>EnergyFlow - Dashboard</title>
-      <link rel="icon" type="image/png" href="src/img/energy.png">
-      <link rel="stylesheet" href="src/css/dash.css">
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
+<html lang="pt-br">
 
-    <body>
-      <div class="dashboard-container">
-        <header class="header">
-          <div class="header-content">
-            <button id="hamburgerBtn" class="hamburger">&#9776;</button>
-            <div class="logo-container">
-              <a href="index.html"><img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-1.svg" alt="EnergyFlow Icon" /></a>
-              <span>EnergyFlow</span>
-            </div>
-            <div class="user-info">
-              <span id="user-name" class="user-role">Carregando...</span>
-              <img id="user-avatar" src="https://via.placeholder.com/32/3B82F6/FFFFFF?text=U" alt="User Avatar" class="user-avatar">
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Painel de Monitoramento de Energia - Acompanhe e gerencie seu consumo de energia com visualização de dados em tempo real e monitoramento de dispositivos." />
+  <title>EnergyFlow - Dashboard</title>
+  <link rel="shortcut icon" href="./src/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="src/css/dashboard.css" />
+  <link rel="stylesheet" href="src/css/units.css" />
+</head>
+
+<body class="font-sans theme-transition">
+  <!-- sidebar -->
+  <aside id="sidebar"
+    class="fixed left-0 top-0 h-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 sidebar-transition z-50"
+    style="width: 240px">
+    <div class="flex flex-col h-full">
+      <!-- Logo -->
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <h1 class="row text-xl font-semibold text-gray-900 dark:text-gray-100">
+          <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 12V8.964" />
+            <path d="M14 12V8.964" />
+            <path d="M15 12a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2a1 1 0 0 1 1-1z" />
+            <path
+              d="M8.5 21H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2v-2" />
+          </svg>
+          EnergyFlow
+        </h1>
+      </div>
+      <!-- nav -->
+      <nav class="flex-1 p-4" role="navigation" aria-label="Main navigation">
+        <ul class="space-y-2">
+          <li>
+            <a href="#" data-section="overview"
+              class="active nav-item active flex items-center gap-3 px-4 py-3 rounded text-primary bg-primary/10 font-normal transition-smooth cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                </path>
+              </svg>
+              <span>Visão Geral</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="units"
+              class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                </path>
+              </svg>
+              <span>Unidades</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="rooms"
+              class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="7" height="7" x="3" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="14" rx="1" />
+                <rect width="7" height="7" x="3" y="14" rx="1" />
+              </svg>
+
+              <span>Ambientes</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="devices"
+              class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                </path>
+              </svg>
+              <span>Dispositivos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="reports"
+              class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
+              </svg>
+              <span>Relatórios</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="settings"
+              class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <span>Configurações</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="logoutBtn"
+              class="nav-item flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <path d="m16 17 5-5-5-5" />
+                <path d="M21 12H9" />
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              </svg>
+              <span>Sair</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- dark mode toggle -->
+      <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+        <button id="darkModeToggle"
+          class="flex items-center gap-3 px-4 py-3 rounded text-nav-text hover:bg-gray-100 dark:hover:bg-gray-800 font-normal transition-smooth cursor-pointer w-full"
+          aria-label="Toggle dark mode">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          <span>Modo Escuro</span>
+        </button>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </aside>
+
+  <!-- mobile menu toggle -->
+  <button id="mobileMenuToggle"
+    class="fixed top-4 left-4 z-50 lg:hidden bg-white dark:bg-gray-900 p-3 rounded border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100"
+    aria-label="Toggle mobile menu">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+
+  <!-- main content -->
+  <main id="main-content" class="lg:ml-60 min-h-screen">
+    <!-- javascript traz o conteúdo pra cá, conforme o item no menu está selecionado -->
+  </main>
+  
+  <!-- unidades -->
+  <!-- modal adicionar/editar unidade -->
+  <div id="unitModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center justify-between">
+          <h3 id="modalTitle" class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+            Nova Unidade
+          </h3>
+          <button id="closeModalBtn" class="btn-icon" aria-label="Fechar modal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="alert" class="alert"></div>
+      <!-- form -->
+      <form id="unitForm" class="p-6">
+        <input type="hidden" id="unitId" />
+        <div class="form-group">
+          <label for="unitName" class="form-label">Nome da Unidade *</label>
+          <input type="text" id="unitName" class="form-input" placeholder="Ex: Prédio A" required />
+          <span class="error-message" id="unitNameError"></span>
+        </div>
+        <div class="form-group">
+          <label for="unitCode" class="form-label">Código de Acesso *</label>
+          <input type="text" id="unitCode" class="form-input" placeholder="Ex: BLD-A-001" required />
+          <span class="error-message" id="unitCodeError"></span>
+        </div>
+        <div class="form-group">
+          <label for="cep" class="form-label">CEP *</label>
+          <input type="text" id="cep" class="form-input" placeholder="00000-000" maxlength="9" required />
+          <span class="error-message" id="cepError"></span>
+        </div>
+        <div class="form-group">
+          <label for="numero" class="form-label">Número *</label>
+          <input type="text" id="numero" class="form-input" placeholder="Ex: 100" required />
+          <span class="error-message" id="numeroError"></span>
+        </div>
+        <div class="form-group">
+          <label for="logradouro" class="form-label">Logradouro</label>
+          <input type="text" id="logradouro" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="Rua Exemplo"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="bairro" class="form-label">Bairro</label>
+          <input type="text" id="bairro" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="Centro"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="cidade" class="form-label">Cidade</label>
+          <input type="text" id="cidade" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="São Paulo"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="estado" class="form-label">Estado</label>
+          <input type="text" id="estado" class="form-input bg-gray-100 dark:bg-gray-700" placeholder="SP" readonly />
+        </div>
+        <div class="flex gap-3 justify-end mt-6">
+          <button type="button" class="btn btn-secondary" id="cancelBtn">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary" id="saveBtn">
+            Salvar Unidade
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- modal para apagar unidade -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="flex items-start gap-4 mb-6">
+          <div
+            class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
+            </svg>
           </div>
-        </header>
-
-        <aside class="sidebar">
-          <div class="mobile-logo">
-              <a href="index.html"><img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-1.svg" alt="EnergyFlow Icon" /></a>
-              <span>EnergyFlow</span>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Excluir Unidade</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Tem certeza de que deseja excluir esta unidade? Esta ação não pode ser desfeita.
+            </p>
           </div>
-          <nav class="sidebar-nav">
-            <ul>
-              <li><a href="#" class="nav-item active" data-page="dashboard">
-                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-7.svg" alt="Dashboard Icon" class="nav-icon">
-                Dashboard
-              </a></li>
-              <li><a href="#" class="nav-item" data-page="devices">
-                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-5.svg" alt="Devices Icon" class="nav-icon">
-                Gerenciamento
-              </a></li>
-              <li><a href="#" class="nav-item" data-page="reports">
-                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-4.svg" alt="Reports Icon" class="nav-icon">
-                Relatórios
-              </a></li>
-              <li><a href="#" class="nav-item" data-page="settings">
-                <img src="https://c.animaapp.com/mgii4jjvbXPm2I/assets/icon-6.svg" alt="Settings Icon" class="nav-icon">
-                Configurações
-              </a></li>
-              <button id="logoutBtn" class="btn btn-secondary">Sair</button>
-            </ul>
-          </nav>
-        </aside>
+        </div>
+        <div class="flex gap-3 justify-end">
+          <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Excluir Unidade</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <main class="main-content">
-          <section id="dashboard-page" class="page-content active">
-            <h1>Visão Geral</h1>
-            <div class="dashboard-metrics">
-              <div class="metric-card">
-                <h3>Consumo Total Atual</h3>
-                <p class="metric-value" id="total-consumption">0 W</p>
-              </div>
-              <div class="metric-card">
-                <h3>Maior Consumo (Período)</h3>
-                <p class="metric-value" id="highest-consumption">0 W</p>
-              </div>
-              <div class="metric-card">
-                <h3>Menor Consumo (Período)</h3>
-                <p class="metric-value" id="lowest-consumption">0 W</p>
-              </div>
-            </div>
+  <!-- ambientes -->
+  <tbody id="roomsTableBody">
+    <!-- colunas da tabela populada pelo javascript -->
+  </tbody>
+  </table>
+  <div id="emptyRoomsState" class="empty-state" style="display: none">
+    <svg class="empty-state-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+      </path>
+    </svg>
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Nenhum ambiente encontrado</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Comece adicionando seu primeiro ambiente</p>
+    <button class="btn btn-primary" onclick="RoomsModule.openAddModal()">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+      </svg>
+      Adicione seu primeiro ambiente
+    </button>
+  </div>
+  </div>
+  </section>
+  </div>
 
-            <div class="chart-card">
-              <h2>Consumo em Tempo Real</h2>
-              <div class="chart-container">
-                <canvas id="realtime-chart"></canvas>
-              </div>
-            </div>
+  <!-- modal adicionar/editar ambiente -->
+  <div id="roomModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center justify-between">
+          <h3 id="roomModalTitle" class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          </h3>
+          <button id="closeRoomModalBtn" class="btn-icon" aria-label="Close modal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="alert" class="alert"></div>
+      <!-- form -->
+      <form id="roomForm" class="p-6">
+        <input type="hidden" id="roomId" />
+        <div class="form-group">
+          <label for="roomName" class="form-label">Nome do Ambiente *</label>
+          <input type="text" id="roomName" class="form-input" placeholder="Ex: Sala 101" required />
+        </div>
+        <div class="form-group">
+          <label for="roomUnit" class="form-label">Unidade *</label>
+          <select id="roomUnit" class="form-select" required>
+            <option value="">Selecione uma unidade</option>
+            <!-- opções serão carregadas via javascript -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="roomDescription" class="form-label">Descrição</label>
+          <textarea id="roomDescription" class="form-input" rows="3" placeholder="Descrição opcional..."></textarea>
+        </div>
+        <div class="flex gap-3 justify-end">
+          <button type="button" class="btn btn-secondary" id="cancelRoomBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="saveRoomBtn">Salvar Ambiente</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-            <h2>Status dos Dispositivos</h2>
-            <div class="device-grid">
-              <div class="device-card">
-                <div class="device-header">
-                  <span class="device-name">Luzes da Sala de Estar</span>
-                  <span class="device-status active">Online</span>
-                </div>
-                <p class="device-usage" id="device-1-usage">0 W</p>
-                <button class="device-action-btn">Ver Detalhes</button>
-              </div>
-              <div class="device-card">
-                <div class="device-header">
-                  <span class="device-name">Geladeira da Cozinha</span>
-                  <span class="device-status active">Online</span>
-                </div>
-                <p class="device-usage" id="device-2-usage">0 W</p>
-                <button class="device-action-btn">Ver Detalhes</button>
-              </div>
-              <div class="device-card">
-                <div class="device-header">
-                  <span class="device-name">Ar Condicionado do Escritório</span>
-                  <span class="device-status inactive">Offline</span>
-                </div>
-                <p class="device-usage" id="device-3-usage">0 W</p>
-                <button class="device-action-btn">Ver Detalhes</button>
-              </div>
-              <div class="device-card">
-                <div class="device-header">
-                  <span class="device-name">Servidor</span>
-                  <span class="device-status active">Online</span>
-                </div>
-                <p class="device-usage" id="device-4-usage">0 W</p>
-                <button class="device-action-btn">Ver Detalhes</button>
-              </div>
-            </div>
-          </section>
+  <!-- modal para apagar ambiente -->
+  <div id="deleteRoomModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="flex items-start gap-4 mb-6">
+          <div
+            class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Excluir Ambiente</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Tem certeza de que deseja excluir este 
+              ambiente? Esta ação não pode ser desfeita.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 justify-end">
+          <button type="button" class="btn btn-secondary" id="cancelDeleteRoomBtn">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteRoomBtn">Excluir Ambiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- relatorios -->
-          <section id="reports-page" class="page-content">
-            <h1>Relatórios de Energia</h1>
-            <div class="report-filters">
-              <div class="form-group">
-                <label for="start-date">Início:</label>
-                <input type="date" id="start-date" class="form-input">
-              </div>
-              <div class="form-group">
-                <label for="end-date">Fim:</label>
-                <input type="date" id="end-date" class="form-input">
-              </div>
-              <button class="button-primary">Gerar Relatório</button>
-            </div>
+  <!-- modal adicionar/editar dispositivo -->
+  <div id="deviceModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center justify-between">
+          <h3 id="deviceModalTitle" class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          </h3>
+          <button id="closeDeviceModalBtn" class="btn-icon" aria-label="Fechar modal">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- form -->
+      <form id="deviceForm" class="p-6 space-y-4">
+        <input type="hidden" id="deviceId" />
+        <div class="form-group">
+          <label for="deviceName" class="form-label">Nome do Dispositivo *</label>
+          <input type="text" id="deviceName" class="form-input" placeholder="Ex: Ar-condicionado da Sala 101"
+            required />
+        </div>
+        <div class="form-group">
+          <label for="deviceType" class="form-label">Tipo *</label>
+          <input type="text" id="deviceType" class="form-input" placeholder="Ex: Sensor de temperatura" required />
+        </div>
+        <div class="form-group">
+          <label for="devicePower" class="form-label">Potência (W) *</label>
+          <input type="number" id="devicePower" class="form-input" placeholder="Ex: 1500" required min="0"
+            step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="deviceRoom" class="form-label">Ambiente *</label>
+          <select id="deviceRoom" class="form-select" required>
+            <option value="">Carregando ambientes...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="deviceStatus" class="form-label">Status *</label>
+          <select id="deviceStatus" class="form-select" required>
+            <option value="active">Ativo</option>
+            <option value="inactive">Inativo</option>
+          </select>
+        </div>
+        <div class="flex gap-3 justify-end pt-2">
+          <button type="button" class="btn btn-secondary" id="cancelDeviceBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="saveDeviceBtn">Salvar Dispositivo</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-            <div class="table-card">
-              <h2>Resumo dos Dados de Consumo</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Data/Hora</th>
-                    <th>Consumo Min (W)</th>
-                    <th>Consumo Max(W)</th>
-                    <th>Consumo Médio (W)</th>
-                  </tr>
-                </thead>
-                <tbody id="reports-table-body">
-                  <tr>
-                    <td>01-01-2025 10:00</td>
-                    <td>150</td>
-                    <td>300</td>
-                    <td>220</td>
-                  </tr>
-                  <tr>
-                    <td>01-01-2025 10:10</td>
-                    <td>160</td>
-                    <td>320</td>
-                    <td>240</td>
-                  </tr>
-                  <tr>
-                    <td>01-01-2025 10:20</td>
-                    <td>140</td>
-                    <td>280</td>
-                    <td>200</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+  <!-- modal para apagar dispositivo -->
+  <div id="deleteDeviceModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="flex items-start gap-4 mb-6">
+          <div
+            class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Excluir Dispositivo</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Tem certeza de que deseja excluir este dispositivo? Esta ação não pode ser desfeita.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-3 justify-end">
+          <button type="button" class="btn btn-secondary" id="cancelDeleteDeviceBtn">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteDeviceBtn">Excluir Dispositivo</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- configurações -->
-          <section id="settings-page" class="page-content">
-            <h1>Configurações</h1>
-            <div class="settings-section">
-              <h2>Perfil do Usuário</h2>
-              <div class="form-group">
-                <label for="username">Nome de Usuário:</label>
-                <input type="text" id="username" value="admin" class="form-input" disabled>
-              </div>
-              <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" value="admin@energyflow.com" class="form-input" disabled>
-              </div>
-              <button class="button-primary">Mudar Senha</button>
-            </div>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-            <div class="settings-section">
-              <h2>Preferências do Sistema</h2>
-              <div class="form-group">
-                <label for="refresh-rate">Taxa de atualização do painel (segundos):</label>
-                <input type="number" id="refresh-rate" value="5" min="1" class="form-input">
-              </div>
-              <button class="button-primary">Salvar Preferências</button>
-            </div>
-          </section>
-
-           <!-- gerenciamento -->
-          <section id="devices-page" class="page-content">
-            <div class="container">
-              <div>
-                <h1>Gerenciamento de Recursos</h1> 
-                </div>
-                <div>
-                  <p>Organize e acompanhe todos os recursos da sua empresa de forma centralizada.br
-                    Aqui você pode cadastrar <strong>unidades, ambientes e dispositivos</strong>, garantindo um <strong>controle completo</strong> sobre sua infraestrutura.
-                    Mantenha as informações sempre atualizadas para facilitar o <strong>monitoramento</strong> e a gestão eficiente dos seus recursos.</p>
-                </div>
-              <div class="features-grid">
-                <div class="feature-card" data-url="unidade.html">
-                  <div class="feature-icon">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16 4V28M4 16H28" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-                      <circle cx="16" cy="16" r="10" stroke="#10B981" stroke-width="2"/>
-                    </svg>
-                  </div>
-                    <h3 class="feature-title">Unidades</h3>
-                    <p class="feature-description">Cadastre as unidades da sua empresa</p>
-                </div>
-            
-              <div class="feature-card" data-url="ambiente.html">
-                <div class="feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 8V16L20 20" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="16" cy="16" r="10" stroke="#3B82F6" stroke-width="2"/>
-                  </svg>
-                </div>
-                  <h3 class="feature-title">Ambientes</h3>
-                  <p class="feature-description">Cadastre os ambientes das suas unidades</p>
-                </div>
-              
-              <div class="feature-card" data-url="dispositivo.html">
-                <div class="feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" y="10" width="20" height="16" rx="2" stroke="#10B981" stroke-width="2"/>
-                    <path d="M10 6V10M22 6V10M6 14H26" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                  <h3 class="feature-title">Dispositivos</h3>
-                  <p class="feature-description">Cadastre os dispositivos dos seus ambientes</p>
-                </div>
-              </div>
-              <div class="table-card">
-                <h2>Unidades Cadastradas</h2>
-                <table id="tabelaUnidades">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Código de Acesso</th>
-                      <th>CEP</th>
-                      <th>Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-
-              <div class="table-card">
-                <h2>Ambientes Cadastrados</h2>
-                <table id="tabelaAmbientes">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Unidade</th>
-                      <th>Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-
-              <div class="table-card">
-                <h2>Dispositivos Cadastrados</h2>
-                <table id="tabelaDispositivos">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Tipo</th>
-                      <th>Ambiente</th>
-                      <th>Status</th>
-                      <th>Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-
-              <div id="alert" class="alert"></div>
-            </div>
-            </div>
-            <!-- <h1>Gerenciamento de Dispositivos</h1> 
-            <button class="button-primary add-device-btn">Adicionar Dispositivo</button>
-
-            <div class="table-card">
-              <h2>Todos Dispositivos</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID do Dispositivo</th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Status</th>
-                    <th>Consumo Atual (W)</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>DISP001</td>
-                    <td>Luzes da Sala de Estar</td>
-                    <td>Iluminação</td>
-                    <td><span class="device-status active">Online</span></td>
-                    <td id="table-device-1-usage">0</td>
-                    <td>
-                      <button class="button-secondary small">Editar</button>
-                      <button class="button-danger small">Remover</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>DISP002</td>
-                    <td>Geladeira da Cozinha</td>
-                    <td>Eletrodoméstico</td>
-                    <td><span class="device-status active">Online</span></td>
-                    <td id="table-device-2-usage">0</td>
-                    <td>
-                      <button class="button-secondary small">Editar</button>
-                      <button class="button-danger small">Remover</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>DISP003</td>
-                    <td>Ar Condicionado do Escritório</td>
-                    <td>AC</td>
-                    <td><span class="device-status inactive">Offline</span></td>
-                    <td id="table-device-3-usage">0</td>
-                    <td>
-                      <button class="button-secondary small">Editar</button>
-                      <button class="button-danger small">Remover</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>DISP004</td>
-                    <td>Servidor</td>
-                    <td>Equipamento de TI</td>
-                    <td><span class="device-status active">Online</span></td>
-                    <td id="table-device-4-usage">0</td>
-                    <td>
-                      <button class="button-secondary small">Editar</button>
-                      <button class="button-danger small">Remover</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div> -->
-          </section>
-          
-      <script src="src/js/dashboard.js"></script>
-      <script src="src/js/registros.js"></script>
-    </body>
-    </html>
+  <script src="src/js/units.js"></script>
+  <script src="src/js/rooms.js"></script>
+  <script src="src/js/devices.js"></script>
+  <script src="src/js/dashboard.js"></script>
+</body>
+</html>

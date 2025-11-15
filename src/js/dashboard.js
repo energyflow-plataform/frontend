@@ -1,228 +1,253 @@
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // 🔹 Recupera os dados do usuário
+// verifica login e recupera o usuário
+function verificarSessao() {
   const usuarioData = localStorage.getItem('usuario');
 
-  // 🔹 Se não houver usuário, redireciona pro login
+  // nenhum dado salvo → redireciona pro login
   if (!usuarioData) {
-    window.location.href = 'login.html';
-    return;
+    console.warn("Nenhum usuário encontrado. Redirecionando para login...");
+    window.location.href = "login.html";
+    return null;
   }
 
-  // 🔹 Converte de volta pra objeto
-  const usuario = JSON.parse(usuarioData);
+  try {
+    const usuario = JSON.parse(usuarioData);
 
-  // 🔹 Exibe o nome do usuário
-  const userNameElement = document.querySelector('.user-role');
-  if (userNameElement) {
-    userNameElement.textContent = `${usuario.nome} ${usuario.sobrenome}`;
-  }
-
-  // 🔹 Atualiza a foto (ou mantém placeholder se não tiver)
-  const userAvatar = document.querySelector('.user-avatar');
-  if (userAvatar) {
-    userAvatar.src = usuario.foto || 'https://via.placeholder.com/32/3B82F6/FFFFFF?text=U';
-  }
-
-  // 🔹 Botão de logout
-  const logoutBtn = document.getElementById('logoutBtn');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', function() {
-      // Remove os dados do usuário
+    // se não tiver token, redireciona também
+    if (!usuario.token) {
+      console.warn("Token ausente ou inválido. Redirecionando para login...");
       localStorage.removeItem('usuario');
-      window.location.href = 'login.html';
-    });
+      window.location.href = "login.html";
+      return null;
+    }
+
+    return usuario;
+  } catch (error) {
+    console.error("Erro ao ler dados do usuário:", error);
+    localStorage.removeItem('usuario');
+    window.location.href = "login.html";
+    return null;
   }
+}
 
-      document.querySelectorAll('.feature-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const url = card.getAttribute('data-url');
-          window.location.href = url;
-        });
+const usuario = verificarSessao();
+
+// se não há usuário, para aqui — o redirecionamento já foi feito
+if (usuario) {
+  document.addEventListener("DOMContentLoaded", () => {
+    const userNameElement = document.querySelector('user-name');
+    if (userNameElement) {
+      userNameElement.textContent = `${usuario.nome} ${usuario.sobrenome}`;
+    }
+
+    const userAvatar = document.querySelector('user-avatar');
+    if (userAvatar) {
+      userAvatar.src = usuario.foto || 'https://via.placeholder.com/32/3B82F6/FFFFFF?text=U';
+    }
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        window.location.href = 'login.html';
       });
+    }
+  });
+}
 
-      const mainContent = document.querySelector('.main-content');
-      const navItems = document.querySelectorAll('.nav-item');
-      let realtimeChart;
-      let currentRefreshInterval;
+// ------------------- Dark Mode Toggle -------------------
+const darkModeToggle = document.getElementById('darkModeToggle');
+const html = document.documentElement;
 
-      // mudar tabs
-      function showPage(pageId) {
-        document.querySelectorAll('.page-content').forEach(page => {
-          page.classList.remove('active');
-        });
-        document.getElementById(`${pageId}-page`).classList.add('active');
+const currentTheme = localStorage.getItem('theme') || 'light';
+if (currentTheme === 'dark') {
+  html.classList.add('dark');
+}
 
-        navItems.forEach(item => {
-          item.classList.remove('active');
-          if (item.dataset.page === pageId) {
-            item.classList.add('active');
-          }
-        });
+darkModeToggle.addEventListener('click', () => {
+  html.classList.toggle('dark');
+  const theme = html.classList.contains('dark') ? 'dark' : 'light';
+  localStorage.setItem('theme', theme);
 
-        // para a simulação se sair do dashboard
-        if (pageId !== 'dashboard' && currentRefreshInterval) {
-          clearInterval(currentRefreshInterval);
-          currentRefreshInterval = null;
-        }
+  if (energyChart) updateChartColors();
+});
 
-        // começa a simulação se tiver no dashboard
-        if (pageId === 'dashboard') {
-          startRealtimeUpdates();
-        }
-      }
+// ------------------- Mobile Menu Toggle -------------------
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const sidebar = document.getElementById('sidebar');
 
-      // chart.js
-      function initializeChart() {
-        const ctx = document.getElementById('realtime-chart').getContext('2d');
-        realtimeChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'Consumo de Energia(W)',
-              data: [],
-              borderColor: 'rgb(16, 185, 129)',
-              backgroundColor: 'rgba(16, 185, 129, 0.2)',
-              fill: true,
-              tension: 0.1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: {
-                type: 'category',
-                title: {
-                  display: true,
-                  text: 'Hora'
-                }
-              },
-              y: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Energia (W)'
-                }
-              }
-            }
-          }
-        });
-      }
+mobileMenuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('hidden');
+});
 
-      // simula dados em tempo real
-      async function fetchRealtimeData() {
-        const totalConsumption = Math.floor(Math.random() * (1500 - 500 + 1)) + 500; 
-        const deviceUsages = {
-          'device-1-usage': Math.floor(Math.random() * (100 - 10 + 1)) + 10,
-          'device-2-usage': Math.floor(Math.random() * (200 - 50 + 1)) + 50,
-          'device-3-usage': Math.floor(Math.random() * (500 - 100 + 1)) + 100,
-          'device-4-usage': Math.floor(Math.random() * (800 - 200 + 1)) + 200,
-        };
+// fecha o menu se clicar pra fora
+document.addEventListener('click', (e) => {
+  if (window.innerWidth < 1024) {
+    if (!sidebar.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+      sidebar.classList.add('hidden');
+    }
+  }
+});
 
-        // simula o dispositivo 3 offline as vezes
-        const device3StatusElement = document.querySelector('#dashboard-page #device-3-usage').previousElementSibling.querySelector('.device-status');
-        const tableDevice3StatusElement = document.querySelector('#devices-page #table-device-3-usage').previousElementSibling.querySelector('.device-status');
-        if (Math.random() > 0.8) { 
-          deviceUsages['device-3-usage'] = 0;
-          device3StatusElement.classList.remove('active');
-          device3StatusElement.classList.add('inactive');
-          device3StatusElement.textContent = 'Offline';
-          tableDevice3StatusElement.classList.remove('active');
-          tableDevice3StatusElement.classList.add('inactive');
-          tableDevice3StatusElement.textContent = 'Offline';
-        } else {
-          device3StatusElement.classList.remove('inactive');
-          device3StatusElement.classList.add('active');
-          device3StatusElement.textContent = 'Online';
-          tableDevice3StatusElement.classList.remove('inactive');
-          tableDevice3StatusElement.classList.add('active');
-          tableDevice3StatusElement.textContent = 'Online';
-        }
+// sidebar no desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 1024) sidebar.classList.remove('hidden');
+  else sidebar.classList.add('hidden');
+});
 
+if (window.innerWidth < 1024) sidebar.classList.add('hidden');
 
-        // atualiza os dados
-        document.getElementById('total-consumption').textContent = `${totalConsumption} W`;
+// ------------------- Navigation Active State -------------------
+const navItems = document.querySelectorAll('.nav-item');
 
-        // atualiza o consumo de cada um dos dispositivos
-        for (const deviceId in deviceUsages) {
-          document.getElementById(deviceId).textContent = `${deviceUsages[deviceId]} W`;
-          // atualiza a table
-          const tableDeviceId = `table-${deviceId}`;
-          const tableElement = document.getElementById(tableDeviceId);
-          if (tableElement) {
-            tableElement.textContent = deviceUsages[deviceId];
-          }
-        }
-
-        // simula atualização de min/max
-        const currentHighest = parseFloat(document.getElementById('highest-consumption').textContent) || 0;
-        const currentLowest = parseFloat(document.getElementById('lowest-consumption').textContent) || Infinity;
-
-        if (totalConsumption > currentHighest) {
-          document.getElementById('highest-consumption').textContent = `${totalConsumption} W`;
-        }
-        if (totalConsumption < currentLowest) {
-          document.getElementById('lowest-consumption').textContent = `${totalConsumption} W`;
-        }
-
-        // atualiza o grafico
-        const now = new Date();
-        const timeLabel = now.toLocaleTimeString();
-
-        realtimeChart.data.labels.push(timeLabel);
-        realtimeChart.data.datasets[0].data.push(totalConsumption);
-
-        // so aparece os ultimos 20 registros
-        const maxDataPoints = 20;
-        if (realtimeChart.data.labels.length > maxDataPoints) {
-          realtimeChart.data.labels.shift();
-          realtimeChart.data.datasets[0].data.shift();
-        }
-        realtimeChart.update();
-      }
-
-      function getRefreshRate() {
-        const rateInput = document.getElementById('refresh-rate');
-        return (rateInput ? parseInt(rateInput.value) * 1000 : 5000) || 5000; 
-      }
-
-      function startRealtimeUpdates() {
-        if (currentRefreshInterval) {
-          clearInterval(currentRefreshInterval);
-        }
-        const refreshRate = getRefreshRate();
-        fetchRealtimeData();
-        currentRefreshInterval = setInterval(fetchRealtimeData, refreshRate);
-      }
-
-      // tabs
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          showPage(e.currentTarget.dataset.page);
-        });
-      });
-
-      // pra iniciar
-      initializeChart();
-      showPage('dashboard');
-
-      const hamburger = document.getElementById('hamburgerBtn');
-      const sidebar = document.querySelector('.sidebar');
-
-      hamburger.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-      });
-
-      // Opcional: fechar sidebar ao clicar em algum item
-      document.querySelectorAll('.sidebar-nav .nav-item').forEach(item => {
-        item.addEventListener('click', () => {
-          if(window.innerWidth <= 768) {
-            sidebar.classList.remove('active');
-          }
-        });
-      });
-
+navItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    navItems.forEach((nav) => {
+      nav.classList.remove('active', 'text-primary', 'bg-primary/10');
+      nav.classList.add('text-nav-text');
     });
+    item.classList.add('active', 'text-primary', 'bg-primary/10');
+    item.classList.remove('text-nav-text');
+  });
+});
+
+// ------------------- Chart.js -------------------
+let energyChart;
+
+const isDark = () => html.classList.contains('dark');
+
+const getChartColors = () => ({
+  grid: isDark() ? 'hsl(220, 10%, 30%)' : 'hsl(220, 13%, 90%)',
+  text: isDark() ? 'hsl(0, 0%, 80%)' : 'hsl(220, 8%, 35%)',
+  primary: 'hsl(158 84% 35% / 0.38)',
+});
+
+function createChart(canvas) {
+  if (!canvas) return; // protege caso canvas não exista
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const colors = getChartColors();
+
+  energyChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'Consumo de Energia (kWh)',
+        data: [420, 380, 450, 390, 470, 410, 430],
+        borderColor: colors.primary,
+        backgroundColor: colors.primary,
+        tension: 0.4,
+        fill: true,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 750, easing: 'easeInOutQuart' },
+      interaction: { intersect: false, mode: 'index' },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { color: colors.text, usePointStyle: true, padding: 20, font: { family: 'Inter, sans-serif', size: 12 } }
+        },
+        tooltip: {
+          enabled: true,
+          backgroundColor: isDark() ? 'hsl(220, 12%, 20%)' : 'hsl(0, 0%, 100%)',
+          titleColor: colors.text,
+          bodyColor: colors.text,
+          borderColor: colors.grid,
+          borderWidth: 1,
+          padding: 12,
+          displayColors: true,
+          callbacks: {
+            label: (context) => `${context.dataset.label}: ${context.parsed.y} kWh`
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: colors.text, font: { family: 'Inter, sans-serif', size: 11 } } },
+        y: { beginAtZero: true, grid: { color: colors.grid, drawBorder: false }, ticks: { color: colors.text, font: { family: 'Inter, sans-serif', size: 11 }, callback: (v) => v + ' kWh' } }
+      }
+    }
+  });
+}
+
+function updateChartColors() {
+  if (!energyChart) return;
+  const colors = getChartColors();
+  energyChart.options.plugins.legend.labels.color = colors.text;
+  energyChart.options.plugins.tooltip.backgroundColor = isDark() ? 'hsl(220, 12%, 20%)' : 'hsl(0,0%,100%)';
+  energyChart.options.plugins.tooltip.titleColor = colors.text;
+  energyChart.options.plugins.tooltip.bodyColor = colors.text;
+  energyChart.options.plugins.tooltip.borderColor = colors.grid;
+  energyChart.options.scales.x.ticks.color = colors.text;
+  energyChart.options.scales.y.ticks.color = colors.text;
+  energyChart.options.scales.y.grid.color = colors.grid;
+  energyChart.update();
+}
+
+// ------------------- carrega as seções por fetch -------------------
+const main = document.getElementById('main-content');
+
+async function loadSection(sectionName) {
+  try {
+    const response = await fetch(`${sectionName}.html`);
+    if (!response.ok) throw new Error(`Erro ao carregar ${sectionName}`);
+    main.innerHTML = await response.text();
+
+    // espera o DOM atualizar antes de inicializar chart ou JS da seção
+    requestAnimationFrame(() => {
+      if (sectionName === 'overview') {
+        const canvas = document.getElementById('energyChart');
+        if (canvas) createChart(canvas);
+      }
+
+      if (sectionName === 'units') UnitsModule.initUnitsSection();
+      if (sectionName === 'rooms') RoomsModule.initRoomsSection();
+      if (sectionName === 'devices') DevicesModule.initDevicesSection();
+    });
+
+  } catch (err) {
+    console.error('Erro ao carregar seção:', err);
+  }
+}
+
+function setActiveLink(sectionName) {
+  navItems.forEach(link => {
+    link.classList.remove('active', 'text-primary', 'bg-primary/10');
+    link.classList.add('text-nav-text');
+    if (link.dataset.section === sectionName) {
+      link.classList.add('active', 'text-primary', 'bg-primary/10');
+      link.classList.remove('text-nav-text');
+    }
+  });
+}
+
+// ------------------- Inicialização -------------------
+const initialSection = location.hash ? location.hash.slice(1) : 'overview';
+setActiveLink(initialSection);
+loadSection(initialSection);
+
+// Click nos links da sidebar
+navItems.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const sectionName = link.dataset.section;
+    if (!sectionName) return;
+
+    setActiveLink(sectionName);
+    loadSection(sectionName);
+    history.replaceState(null, '', '#' + sectionName);
+  });
+});
+
+// Voltar/avançar no navegador
+window.addEventListener('hashchange', () => {
+  const sectionName = location.hash ? location.hash.slice(1) : 'overview';
+  setActiveLink(sectionName);
+  loadSection(sectionName);
+});

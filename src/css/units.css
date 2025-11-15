@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: hsl(222, 47%, 11%);
+  background-color: hsl(0, 0%, 98%);
+}
+
+.dark {
+  color: hsl(0, 0%, 96%);
+  background-color: hsl(222, 47%, 11%);
+}
+
+.dark .bg-neutral {
+  background-color: hsl(220, 12%, 15%);
+}
+
+.dark .bg-white {
+  background-color: hsl(220, 12%, 20%);
+}
+
+.dark .text-gray-900 {
+  color: hsl(0, 0%, 96%);
+}
+
+.dark .text-gray-700 {
+  color: hsl(0, 0%, 80%);
+}
+
+.dark .text-gray-600 {
+  color: hsl(0, 0%, 70%);
+}
+
+.dark .text-nav-text {
+  color: hsl(220, 8%, 70%);
+}
+
+.dark .border-gray-200 {
+  border-color: hsl(220, 10%, 30%);
+}
+
+.dark .border-gray-300 {
+  border-color: hsl(220, 10%, 35%);
+}
+
+.transition-smooth {
+  transition: all 200ms ease-in-out;
+}
+
+.sidebar-transition {
+  transition: width 250ms ease-in-out;
+}
+
+.theme-transition {
+  transition:
+    background-color 300ms ease-in-out,
+    color 300ms ease-in-out;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+.dark .modal-content {
+  background-color: hsl(220, 12%, 20%);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-success {
+  background-color: hsl(145, 63%, 45%, 0.1);
+  color: hsl(145, 63%, 45%);
+}
+
+.badge-inactive {
+  background-color: hsl(220, 8%, 70%, 0.1);
+  color: hsl(220, 8%, 70%);
+}
+
+.dark .badge-inactive {
+  background-color: hsl(220, 10%, 35%);
+  color: hsl(220, 8%, 70%);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 200ms ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: hsl(158, 84%, 35%);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: hsl(158, 84%, 30%);
+}
+
+.btn-secondary {
+  background-color: hsl(220, 14%, 96%);
+  color: hsl(220, 10%, 35%);
+}
+
+.dark .btn-secondary {
+  background-color: hsl(220, 12%, 25%);
+  color: hsl(0, 0%, 80%);
+}
+
+.btn-secondary:hover {
+  background-color: hsl(220, 13%, 90%);
+}
+
+.dark .btn-secondary:hover {
+  background-color: hsl(220, 12%, 30%);
+}
+
+.btn-danger {
+  background-color: hsl(0, 70%, 50%);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: hsl(0, 70%, 45%);
+}
+
+.btn-icon {
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  color: hsl(220, 8%, 40%);
+}
+
+.btn-icon:hover {
+  background-color: hsl(220, 14%, 96%);
+  color: hsl(158, 84%, 35%);
+}
+
+.dark .btn-icon:hover {
+  background-color: hsl(220, 12%, 25%);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(220, 10%, 35%);
+}
+
+.dark .form-label {
+  color: hsl(0, 0%, 80%);
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid hsl(220, 13%, 90%);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background-color: white;
+  color: hsl(222, 47%, 11%);
+  transition: all 200ms ease-in-out;
+}
+
+.dark .form-input,
+.dark .form-select {
+  background-color: hsl(220, 12%, 15%);
+  border-color: hsl(220, 10%, 30%);
+  color: hsl(0, 0%, 96%);
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: hsl(158, 84%, 35%);
+  box-shadow: 0 0 0 3px hsl(158, 84%, 35%, 0.1);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-state-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  color: hsl(220, 8%, 70%);
+}
