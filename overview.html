@@ -1,426 +1,301 @@
 <section id="overview">
-      <!-- Top Bar -->
-      <header
-        class="bg-white sticky z-40 border-b border-gray-200 px-6 lg:px-8 py-4"
-      >
-        <div class="flex justify-between">
+  <!-- Top Bar -->
+  <header class="bg-white sticky z-40 border-b border-gray-200 px-6 lg:px-8 py-4">
+    <div class="flex justify-between">
+      <div>
+        <h2 class="text-header padding-2 text-2xl font-semibold text-gray-900">Visão Geral</h2>
+      </div>
+      <div id="userAvatar"
+        class="w-10 h-10 rounded-full bg-gradient-1 flex items-center justify-center text-white font-semibold cursor-pointer overflow-hidden"
+        role="button" aria-label="User profile">
+      </div>
+    </div>
+  </header>
+
+  <div class="px-6 lg:px-8 py-8 lg:py-12">
     <div>
-      <h2 class="padding-2 text-2xl font-semibold text-gray-900">Visão Geral</h2>
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Bem vindo(a) de volta!</h2>
     </div>
-    <div class="w-10 h-10 rounded-full bg-gradient-1 flex items-center justify-center text-white font-semibold cursor-pointer" role="button" aria-label="User profile">
-      QA
-    </div>
-  </div>
-      </header>
-
-<div class="px-6 lg:px-8 py-8 lg:py-12">
-  <div>
-    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Bem vindo(a) de volta!</h2>
-  </div>
 
 
-      <!-- Content Area -->
-      <div class="px-6 lg:px-8 py-8 lg:py-12">
-        <!-- Statistic Cards -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-          aria-label="Key statistics"
-        >
-          <!-- Total Units Card -->
-          <a href="#units">
-            <article
-              class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth"
-            >
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-12 h-12 rounded bg-primary/10 flex items-center justify-center"
-                >
-                  <svg
-                    class="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="text-xs font-medium text-success">+12%</span>
-              </div>
-              <h3 id="totalUnits"
-                class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1"
-              >
-                24
-              </h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
-                Unidades
-              </p>
-            </article>
-          </a>
-
-          <!-- total rooms Card -->
-          <a href="#rooms">
-            <article
-              class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth"
-            >
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-12 h-12 rounded bg-primary/10 flex items-center justify-center"
-                >
-              <svg xmlns="http://www.w3.org/2000/svg" 
-                  class="w-6 h-6 text-primary"
-                  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="7" height="7" x="3" y="3" rx="1"/>
-                  <rect width="7" height="7" x="14" y="3" rx="1"/>
-                  <rect width="7" height="7" x="14" y="14" rx="1"/>
-                  <rect width="7" height="7" x="3" y="14" rx="1"/>
-              </svg>
-                </div>
-                <span class="text-xs font-medium text-success">+10%</span>
-              </div>
-              <h3 id="totalRooms"
-                class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1"
-              >
-                50
-              </h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
-                Ambientes
-              </p>
-            </article>
-          </a>
-          <!-- Active Devices Card --> 
-          <a href="#devices">
-            <article
-              class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth"
-            >
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-12 h-12 rounded bg-secondary/10 flex items-center justify-center"
-                >
-                  <svg
-                    class="w-6 h-6 text-secondary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="text-xs font-medium text-success">+8%</span>
-              </div>
-              <h3 id="totalDevices"
-                class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1"
-              >
-                156
-              </h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
-                Dispositivos
-              </p>
-            </article>
-          </a>
-          <!-- Power Usage Card -->
+    <!-- Content Area -->
+    <div class="px-6 lg:px-8 py-8 lg:py-12">
+      <!-- Statistic Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" aria-label="Key statistics">
+        <!-- Total Units Card -->
+        <a href="#units">
           <article
-            class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth"
-          >
+            class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth">
             <div class="flex items-start justify-between mb-4">
-              <div
-                class="w-12 h-12 rounded bg-tertiary/10 flex items-center justify-center"
-              >
-                <svg
-                  class="w-6 h-6 text-tertiary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  ></path>
+              <div class="w-12 h-12 rounded bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                  </path>
                 </svg>
               </div>
-              <span class="text-xs font-medium text-warning">-5%</span>
+              <span class="text-xs font-medium text-success">+12%</span>
             </div>
-            <h3
-              class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1"
-            >
-              2,847
+            <h3 id="totalUnits" class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              2
             </h3>
             <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
-              Uso de Energia (kWh)
+              Unidades
             </p>
           </article>
-        </div>
+        </a>
 
-        <!-- Energy Chart Section -->
-        <div
-          class="bg-white dark:bg-gray-800 rounded p-6 lg:p-8 border border-gray-200 dark:border-gray-700 mb-12"
-          aria-label="Energy consumption chart"
-        >
-          <div
-            class="flex flex-col md:flex-row md:items-center md:justify-between mb-6"
-          >
-            <h3
-              class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 md:mb-0"
-            >
-              Consumo Energético
-            </h3>
-            <div class="flex gap-2">
-              <button
-                class="px-4 py-2 rounded bg-primary text-primary-foreground font-normal text-sm transition-smooth hover:bg-primary/90"
-              >
-                Dia
-              </button>
-              <button
-                class="px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-normal text-sm transition-smooth hover:bg-gray-200 dark:hover:bg-gray-600"
-              >
-                Semana
-              </button>
-              <button
-                class="px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-normal text-sm transition-smooth hover:bg-gray-200 dark:hover:bg-gray-600"
-              >
-                Mês
-              </button>
+        <!-- total rooms Card -->
+        <a href="#rooms">
+          <article
+            class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded bg-primary/10 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect width="7" height="7" x="3" y="3" rx="1" />
+                  <rect width="7" height="7" x="14" y="3" rx="1" />
+                  <rect width="7" height="7" x="14" y="14" rx="1" />
+                  <rect width="7" height="7" x="3" y="14" rx="1" />
+                </svg>
+              </div>
+              <span class="text-xs font-medium text-success">+10%</span>
             </div>
-          </div>
-
-          <!-- Chart Canvas -->
-          <div class="relative h-80">
-            <canvas
-              id="energyChart"
-              aria-label="Energy consumption over time"
-            ></canvas>
-          </div>
-        </div>
-        
-        <!-- Devices Table Section -->
-        <div
-          
-          class="bg-white dark:bg-gray-800 rounded p-6 lg:p-8 border border-gray-200 dark:border-gray-700"
-          aria-label="Device monitoring table"
-        >
-          <div
-            class="flex flex-col md:flex-row md:items-center md:justify-between mb-6"
-          >
-            <h3
-              class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 md:mb-0"
-            >
-              Dispositivos Ligados
+            <h3 id="totalRooms" class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              2
             </h3>
-            <input
-              type="search"
-              placeholder="Procurar dispositivos..."
-              class="px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-normal text-sm w-full md:w-64"
-              aria-label="Search devices"
-            />
+            <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+              Ambientes
+            </p>
+          </article>
+        </a>
+        <!-- Active Devices Card -->
+        <a href="#devices">
+          <article
+            class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded bg-secondary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                  </path>
+                </svg>
+              </div>
+              <span class="text-xs font-medium text-success">+8%</span>
+            </div>
+            <h3 id="totalDevices" class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              3
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+              Dispositivos
+            </p>
+          </article>
+        </a>
+        <!-- Power Usage Card -->
+        <a href="http://localhost:8000/monitoramento.php" target="_blank">
+          <article
+            class="bg-white dark:bg-gray-800 rounded p-6 border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary transition-smooth">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded bg-tertiary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              Ao vivo
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 font-normal">
+              Monitoramento
+            </p>
+          </article>
+        </a>
+      </div>
+
+      <!-- Energy Chart Section -->
+      <div class="bg-white dark:bg-gray-800 rounded p-6 lg:p-8 border border-gray-200 dark:border-gray-700 mb-12"
+        aria-label="Energy consumption chart">
+
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 md:mb-0">
+            Consumo Energético
+          </h3>
+
+          <!-- BOTÕES DIA / SEMANA / MÊS -->
+          <div class="flex gap-2 mb-3 md:mb-0">
+            <button id="btnDia" class="btn-chart ativo">Dia</button>
+            <button id="btnSemana" class="btn-chart">Semana</button>
+            <button id="btnMes" class="btn-chart">Mês</button>
+            <button id="btnTempoReal" class="btn-chart">Tempo Real</button>
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead>
-                <tr class="border-b border-gray-200 dark:border-gray-700">
-                  <th
-                    class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300"
-                  >
-                    Nome do Dispositivo
-                  </th>
-                  <th
-                    class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300"
-                  >
-                    Status
-                  </th>
-                  <th
-                    class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300"
-                  >
-                    Consumo
-                  </th>
-                  <th
-                    class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300"
-                  >
-                    Ambiente
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth"
-                >
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    HVAC Unit A1
-                  </td>
-                  <td class="py-4 px-4">
-                    <span
-                      class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium"
-                    >
-                      <span class="w-2 h-2 rounded-full bg-success"></span>
-                      Online
-                    </span>
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    342 kWh
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal"
-                  >
-                    Building A
-                  </td>
-                </tr>
-                <tr
-                  class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth"
-                >
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    Solar Panel B2
-                  </td>
-                  <td class="py-4 px-4">
-                    <span
-                      class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium"
-                    >
-                      <span class="w-2 h-2 rounded-full bg-success"></span>
-                      Online
-                    </span>
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    -156 kWh
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal"
-                  >
-                    Roof B
-                  </td>
-                </tr>
-                <tr
-                  class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth"
-                >
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    Lighting System C1
-                  </td>
-                  <td class="py-4 px-4">
-                    <span
-                      class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium"
-                    >
-                      <span class="w-2 h-2 rounded-full bg-success"></span>
-                      Online
-                    </span>
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    89 kWh
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal"
-                  >
-                    Building C
-                  </td>
-                </tr>
-                <tr
-                  class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth"
-                >
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    Water Heater D3
-                  </td>
-                  <td class="py-4 px-4">
-                    <span
-                      class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs font-medium"
-                    >
-                      <span class="w-2 h-2 rounded-full bg-gray-400"></span>
-                      Offline
-                    </span>
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    0 kWh
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal"
-                  >
-                    Building D
-                  </td>
-                </tr>
-                <tr
-                  class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth"
-                >
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    EV Charger E1
-                  </td>
-                  <td class="py-4 px-4">
-                    <span
-                      class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium"
-                    >
-                      <span class="w-2 h-2 rounded-full bg-success"></span>
-                      Online
-                    </span>
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    567 kWh
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal"
-                  >
-                    Parking E
-                  </td>
-                </tr>
-                <tr
-                  class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth"
-                >
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    Refrigeration F2
-                  </td>
-                  <td class="py-4 px-4">
-                    <span
-                      class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium"
-                    >
-                      <span class="w-2 h-2 rounded-full bg-success"></span>
-                      Online
-                    </span>
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal"
-                  >
-                    234 kWh
-                  </td>
-                  <td
-                    class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal"
-                  >
-                    Building F
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- SELECT -->
+          <div class="flex gap-2">
+            <select id="selectDispositivo" class="meu-select">
+              <option value="">Selecione um dispositivo</option>
+            </select>
           </div>
         </div>
+
+        <!-- Chart Canvas -->
+        <div class="relative h-80">
+          <canvas id="energyChart"></canvas>
         </div>
-        </section>
+      </div>
+
+
+      <!-- Devices Table Section -->
+      <div class="bg-white dark:bg-gray-800 rounded p-6 lg:p-8 border border-gray-200 dark:border-gray-700"
+        aria-label="Device monitoring table">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4 md:mb-0">
+            Dispositivos Ligados
+          </h3>
+          <input type="search" placeholder="Procurar dispositivos..."
+            class="px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-normal text-sm w-full md:w-64"
+            aria-label="Search devices" />
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Nome do Dispositivo
+                </th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Status
+                </th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Consumo
+                </th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Ambiente
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth">
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  HVAC Unit A1
+                </td>
+                <td class="py-4 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-success"></span>
+                    Online
+                  </span>
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  342 kWh
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal">
+                  Building A
+                </td>
+              </tr>
+              <tr
+                class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth">
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  Solar Panel B2
+                </td>
+                <td class="py-4 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-success"></span>
+                    Online
+                  </span>
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  -156 kWh
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal">
+                  Roof B
+                </td>
+              </tr>
+              <tr
+                class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth">
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  Lighting System C1
+                </td>
+                <td class="py-4 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-success"></span>
+                    Online
+                  </span>
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  89 kWh
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal">
+                  Building C
+                </td>
+              </tr>
+              <tr
+                class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth">
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  Water Heater D3
+                </td>
+                <td class="py-4 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-gray-400"></span>
+                    Offline
+                  </span>
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  0 kWh
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal">
+                  Building D
+                </td>
+              </tr>
+              <tr
+                class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth">
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  EV Charger E1
+                </td>
+                <td class="py-4 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-success"></span>
+                    Online
+                  </span>
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  567 kWh
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal">
+                  Parking E
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-smooth">
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  Refrigeration F2
+                </td>
+                <td class="py-4 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success/10 text-success text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-success"></span>
+                    Online
+                  </span>
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-900 dark:text-gray-100 font-normal">
+                  234 kWh
+                </td>
+                <td class="py-4 px-4 text-sm text-gray-600 dark:text-gray-400 font-normal">
+                  Building F
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</section>

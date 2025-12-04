@@ -1,4 +1,70 @@
-<section>
-  <h2>Relatorios</h2>
-  <p>Conteúdo da página de ambientes.</p>
-</section>
+<div class="section-container">
+
+    <header class="bg-white sticky z-40 border-b border-gray-200 px-6 lg:px-8 py-4">
+    <div class="flex justify-between">
+      <div>
+        <h2 class="text-header padding-2 text-2xl font-semibold text-gray-900">Relatórios</h2>
+      </div>
+      <div id="userAvatar"
+        class="w-10 h-10 rounded-full bg-gradient-1 flex items-center justify-center text-white font-semibold cursor-pointer overflow-hidden"
+        role="button" aria-label="User profile">
+      </div>
+    </div>
+  </header>
+
+    <div class="card">
+        <div class="campo">
+            <label>Dispositivo</label>
+            <select id="reportDispositivo"></select>
+        </div>
+
+        <div class="campo">
+            <label>Período</label>
+            <select id="reportPeriodo">
+                <option value="ULTIMAS_24H">Últimas 24h</option>
+                <option value="ULTIMA_SEMANA">Última semana</option>
+                <option value="ULTIMO_MES">Últimos 30 dias</option>
+                <option value="INTERVALO_MANUAL">Intervalo manual</option>
+            </select>
+        </div>
+
+        <div id="reportDatas" style="display: none;">
+            <div class="campo">
+                <label>Início</label>
+                <input type="datetime-local" id="reportInicio">
+            </div>
+
+            <div class="campo">
+                <label>Fim</label>
+                <input type="datetime-local" id="reportFim">
+            </div>
+        </div>
+
+        <button id="reportGerar" class="btn">Gerar Relatório</button>
+    </div>
+
+    <div class="card">
+        <canvas id="reportChart" height="400" ></canvas>
+    </div>
+
+    <div class="card">
+        <h3><strong>Resumo</strong></h3>
+        <div id="reportResumo"></div>
+    </div>
+
+    <div class="card">
+        <h3>Detalhes</h3>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Mín (W)</th>
+                    <th>Máx (W)</th>
+                    <th>Médio (W)</th>
+                </tr>
+            </thead>
+            <tbody id="reportTabela"></tbody>
+        </table>
+    </div>
+
+</div>

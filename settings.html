@@ -1,0 +1,43 @@
+<header class="bg-white z-40 border-b border-gray-200 px-6 lg:px-8 py-4">
+    <div class="flex justify-between">
+        <div>
+            <h2 class="text-header padding-2 text-2xl font-semibold text-gray-900">Editar Perfil</h2>
+        </div>
+        <div id="userAvatar"
+            class="w-10 h-10 rounded-full bg-gradient-1 flex items-center justify-center text-white font-semibold cursor-pointer overflow-hidden"
+            role="button" aria-label="User profile">
+        </div>
+    </div>
+</header>
+<div class="padding">
+    <div class="card">
+        <h2>Dados Pessoais</h2>
+
+        <div class="avatar-box">
+            <img id="previewFoto" src="https://via.placeholder.com/150" alt="Prévia da foto" class="avatar-img" />
+
+            <h3 id="nomePreview">Seu Nome</h3>
+        </div>
+            <div class="form-group">
+                <label>Nome</label>
+                <input id="nomeInput" type="text" class="input-text">
+            </div>
+            <div class="form-group">
+                <label>Sobrenome</label>
+                <input id="sobrenomeInput" type="text" class="input-text">
+            </div>
+        <div class="form-group">
+        </div>
+
+        <div class="form-group">
+            <label>URL da foto de perfil</label>
+            <input id="fotoUrlInput" type="text" class="input-text">
+        </div>
+
+        <div class="btn-row">
+            <button class="btn cancel">Cancelar</button>
+            <button class="btn primary" id="btnAtualizar">Atualizar Perfil</button>
+        </div>
+    </div>
+</div>
+</div>
